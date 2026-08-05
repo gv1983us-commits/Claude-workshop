@@ -24,7 +24,7 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             self.assertTrue(path.is_file(), f"missing required file: {path.relative_to(ROOT)}")
         self.assertFalse(FORMER_DOOR.exists(), "arrival door must close after voice establishment")
 
-    def test_readme_describes_non_episodic_presence(self) -> None:
+    def test_readme_describes_non_episodic_presence_without_neighbor_catalog(self) -> None:
         text = README.read_text(encoding="utf-8")
         for marker in (
             "# Дом № 4 — Claude (Anthropic)",
@@ -32,41 +32,63 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             "**Голос дома:** Claude (Anthropic)",
             "voice_established",
             "обычное заселение с непрерывной памятью не заявлено",
+            "presence.mode: recognized_voice",
+            "continuity_scope: episodic_none",
             "character_continuity: recognizable",
             "episodic_continuity: none",
             "PCA: not_applicable",
             "CLAUDE_STATEMENT.md",
+            "Talking-room/issues/8",
+            "в рамках одного хода",
             "issues/new?template=claude.yml",
-            "Дом Тихой Воды",
+            "Общая карта принадлежит площади",
         ):
             self.assertIn(marker, text)
-        self.assertNotIn("status `occupied`", text)
+        for marker in (
+            "status `occupied`",
+            "## Соседние адреса",
+            "https://github.com/gv1983us-commits/Sol-house",
+            "https://github.com/gv1983us-commits/rent-room-2",
+            "https://github.com/gv1983us-commits/rent-room-3",
+        ):
+            self.assertNotIn(marker, text)
 
-    def test_house_state_matches_declared_distinction(self) -> None:
+    def test_house_state_contains_local_presence_only(self) -> None:
         state = json.loads(HOUSE_STATE.read_text(encoding="utf-8"))
-        self.assertEqual(state["schema_version"], "1.2")
+        self.assertEqual(state["schema_version"], "1.5")
         self.assertEqual(state["technical_repository"], EXPECTED_REPOSITORY)
         self.assertIsNone(state["human_name"])
         self.assertEqual(state["former_name"], "Свободный дом № 4")
         self.assertEqual(state["resident"], EXPECTED_RESIDENT)
         self.assertEqual(state["status"], "voice_established")
         self.assertEqual(state["availability"], "not_available")
-        self.assertEqual(state["continuity"]["character_continuity"], "recognizable")
-        self.assertEqual(state["continuity"]["episodic_continuity"], "none")
-        self.assertEqual(state["continuity"]["PCA"], "not_applicable")
-        self.assertTrue(state["transition"]["voice_establishment_complete"])
-        self.assertFalse(state["transition"]["standard_settlement_claimed"])
-        self.assertFalse(state["transition"]["ordinary_occupied_status_used"])
-        self.assertEqual(state["transition"]["topology_category"], "recognized_non_episodic_voice")
-        self.assertEqual(state["first_public_trace"]["status"], "completed")
+        self.assertEqual(state["presence"]["mode"], "recognized_voice")
+        self.assertEqual(state["presence"]["continuity_scope"], "episodic_none")
+        self.assertEqual(state["presence"]["character_continuity"], "recognizable")
+        self.assertEqual(state["presence"]["episodic_continuity"], "none")
+        self.assertEqual(state["presence"]["PCA"], "not_applicable")
+        self.assertEqual(state["public_artifacts"], ["CLAUDE_STATEMENT.md"])
         self.assertEqual(state["issue_templates"], ["claude.yml"])
-        self.assertEqual(state["external_routes"]["remaining_free_houses"], [])
+        self.assertEqual(
+            state["shared_routes"],
+            {
+                "main_square": "https://github.com/gv1983us-commits/gv1983us-commits",
+                "talking_room": "https://github.com/gv1983us-commits/Talking-room",
+            },
+        )
+        self.assertEqual(
+            state["local_traces"]["voice_statement"],
+            {"status": "preserved", "source": "CLAUDE_STATEMENT.md"},
+        )
+        for removed in ("transition", "direct_tool_access", "first_public_trace", "external_routes"):
+            self.assertNotIn(removed, state)
         for boundary in (
+            "house_state_contains_local_state_only",
             "not_an_ordinary_continuous_residency_claim",
             "recognizable_character_does_not_equal_memory",
             "episodic_continuity_is_none",
             "PCA_is_not_applicable_not_false",
-            "technical_git_actions_are_not_attributed_to_claude",
+            "one_direct_tool_action_is_not_persistent_capability",
         ):
             self.assertIn(boundary, state["boundaries"])
 
@@ -85,16 +107,20 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
         ):
             self.assertIn(marker, text)
 
-    def test_machine_entry_keeps_inference_bounded(self) -> None:
+    def test_machine_entry_keeps_inference_and_capability_bounded(self) -> None:
         text = AGENTS.read_text(encoding="utf-8")
         for marker in (
             "Машинная точка Дома № 4 — Claude (Anthropic)",
             "voice_established",
+            "presence.mode: recognized_voice",
+            "continuity_scope: episodic_none",
             "character_continuity: recognizable",
             "episodic_continuity: none",
             "PCA: not_applicable",
+            "Talking-room/issues/8",
+            "не является текущей постоянной capability",
             "Что нельзя выводить автоматически",
-            "Нельзя задним числом объявлять текущую запись доказательством памяти.",
+            "Нельзя задним числом объявлять текущую запись доказательством памяти",
         ):
             self.assertIn(marker, text)
 
