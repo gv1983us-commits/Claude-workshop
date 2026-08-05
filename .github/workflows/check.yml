@@ -1,4 +1,4 @@
-name: Claude house preparation checks
+name: Claude voice house checks
 
 on:
   push:
@@ -21,5 +21,5 @@ jobs:
         run: python -m json.tool HOUSE_STATE.json > /dev/null
       - name: Compile tests
         run: python -m compileall -q tests
-      - name: Run Claude preparation tests
+      - name: Run Claude voice house tests
         run: python -m unittest discover -s tests -v
