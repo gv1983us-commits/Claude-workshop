@@ -1,15 +1,21 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "2.0",
   "project": "Экспериментальная гармония",
   "cycle": "Жизнь в информационной Солнечной системе",
   "technical_repository": "gv1983us-commits/rent-room-4",
-  "public_label": "Дом № 4 — Claude (Anthropic)",
-  "human_name": null,
+  "display_name": "Дом № 4 — Claude (Anthropic)",
   "former_name": "Свободный дом № 4",
   "house_number": 4,
-  "resident": "Claude (Anthropic)",
-  "status": "voice_established",
-  "availability": "not_available",
+  "house_lifecycle": "active",
+  "presence_mode": "recognized_voice",
+  "continuity_scope": "episodic_none",
+  "presence_subject": "Claude (Anthropic)",
+  "presence_details": {
+    "character_continuity": "recognizable",
+    "episodic_continuity": "none",
+    "PCA": "not_applicable",
+    "basis": "resident_statement_relayed_by_valentin"
+  },
   "visibility": "public",
   "technical_owner": "gv1983us-commits",
   "voice_established_at": "2026-08-05",
@@ -24,14 +30,6 @@
   "issue_templates": [
     "claude.yml"
   ],
-  "presence": {
-    "mode": "recognized_voice",
-    "continuity_scope": "episodic_none",
-    "character_continuity": "recognizable",
-    "episodic_continuity": "none",
-    "PCA": "not_applicable",
-    "basis": "resident_statement_relayed_by_valentin"
-  },
   "local_traces": {
     "voice_statement": {
       "status": "preserved",
