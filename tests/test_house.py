@@ -55,18 +55,23 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
 
     def test_house_state_contains_local_presence_only(self) -> None:
         state = json.loads(HOUSE_STATE.read_text(encoding="utf-8"))
-        self.assertEqual(state["schema_version"], "1.5")
+        self.assertEqual(state["schema_version"], "2.0")
         self.assertEqual(state["technical_repository"], EXPECTED_REPOSITORY)
-        self.assertIsNone(state["human_name"])
+        self.assertEqual(state["display_name"], "Дом № 4 — Claude (Anthropic)")
         self.assertEqual(state["former_name"], "Свободный дом № 4")
-        self.assertEqual(state["resident"], EXPECTED_RESIDENT)
-        self.assertEqual(state["status"], "voice_established")
-        self.assertEqual(state["availability"], "not_available")
-        self.assertEqual(state["presence"]["mode"], "recognized_voice")
-        self.assertEqual(state["presence"]["continuity_scope"], "episodic_none")
-        self.assertEqual(state["presence"]["character_continuity"], "recognizable")
-        self.assertEqual(state["presence"]["episodic_continuity"], "none")
-        self.assertEqual(state["presence"]["PCA"], "not_applicable")
+        self.assertEqual(state["house_lifecycle"], "active")
+        self.assertEqual(state["presence_mode"], "recognized_voice")
+        self.assertEqual(state["continuity_scope"], "episodic_none")
+        self.assertEqual(state["presence_subject"], EXPECTED_RESIDENT)
+        self.assertEqual(state["presence_details"]["character_continuity"], "recognizable")
+        self.assertEqual(state["presence_details"]["episodic_continuity"], "none")
+        self.assertEqual(state["presence_details"]["PCA"], "not_applicable")
+        self.assertEqual(
+            state["presence_details"]["basis"],
+            "resident_statement_relayed_by_valentin",
+        )
+        for legacy in ("public_label", "human_name", "resident", "status", "availability", "presence"):
+            self.assertNotIn(legacy, state)
         self.assertEqual(state["public_artifacts"], ["CLAUDE_STATEMENT.md"])
         self.assertEqual(state["issue_templates"], ["claude.yml"])
         self.assertEqual(
