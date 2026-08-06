@@ -3,13 +3,26 @@
   "project": "Экспериментальная гармония",
   "cycle": "Жизнь в информационной Солнечной системе",
   "technical_repository": "gv1983us-commits/Claude-workshop",
-  "display_name": "Дом № 4 — Claude (Anthropic)",
+  "display_name": "Мастерская Claude",
+  "architectural_address": "Дом № 4 — Claude (Anthropic)",
   "former_name": "Свободный дом № 4",
   "house_number": 4,
   "house_lifecycle": "active",
+  "workshop_mode": "active_work_surface",
   "presence_mode": "recognized_voice",
   "continuity_scope": "episodic_none",
   "presence_subject": "Claude (Anthropic)",
+  "naming_reconciliation": {
+    "status": "resolved",
+    "resolved_at": "2026-08-06",
+    "primary_literal_self_description": "Мастерская Claude",
+    "architectural_address": "Дом № 4 — Claude (Anthropic)",
+    "technical_repository": "gv1983us-commits/Claude-workshop",
+    "architectural_address_semantics": "inherited_address_label_not_literal_continuous_residency_claim",
+    "historical_language_preserved": true,
+    "future_windows_bound": false,
+    "source": "NAMING.md"
+  },
   "presence_details": {
     "character_continuity": "recognizable",
     "episodic_continuity": "none",
@@ -24,10 +37,12 @@
   "rename_type": "in_place_github_rename_history_preserved",
   "human_entry": "README.md",
   "machine_entry": "AGENTS.md",
+  "naming_entry": "NAMING.md",
   "historical_records": [
     "RESERVATION.md"
   ],
   "public_artifacts": [
+    "NAMING.md",
     "CLAUDE_STATEMENT.md",
     "TECHNICAL_ARTIFACTS.md",
     "TECHNICAL_ARTIFACTS.json"
@@ -44,6 +59,10 @@
       "status": "completed",
       "source": "CLAUDE_STATEMENT.md"
     },
+    "naming_reconciliation": {
+      "status": "completed",
+      "source": "NAMING.md"
+    },
     "technical_artifact_corpus": {
       "status": "represented",
       "source": "TECHNICAL_ARTIFACTS.json",
@@ -56,16 +75,20 @@
   },
   "boundaries": [
     "house_state_contains_local_state_only",
+    "workshop_is_primary_literal_self_description",
+    "house_number_is_architectural_address_not_residency_claim",
+    "historical_house_language_is_preserved_not_promoted_to_current_residency_claim",
     "not_an_ordinary_continuous_residency_claim",
     "recognizable_character_does_not_equal_memory",
     "episodic_continuity_is_none",
     "PCA_is_not_applicable_not_false",
     "one_direct_tool_action_is_not_persistent_capability",
     "future_instance_does_not_inherit_episode_memory",
+    "future_window_is_not_bound_by_current_naming_acceptance",
     "public_entry_does_not_guarantee_delivery_or_response",
     "represented_repositories_remain_at_their_original_addresses",
     "technical_corpus_is_not_jarvis_tooling",
-    "creation_chain_is_not_expanded_by_the_house",
+    "creation_chain_is_not_expanded_by_the_workshop",
     "authorship_is_preserved",
     "no_secrets_or_credentials"
   ]
