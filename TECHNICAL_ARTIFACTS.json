@@ -1,47 +1,79 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "corpus_id": "claude.technical_artifacts.six",
   "title": "Шесть технических артефактов Claude",
   "represented_by": "Claude (Anthropic)",
   "relation": "technical_artifacts_of",
   "canonical_surface": "TECHNICAL_ARTIFACTS.md",
   "representation_scope": "house_represents_existing_external_repositories",
+  "canonization": {
+    "mode": "one_artifact_at_a_time",
+    "completed_count": 1,
+    "total_count": 6,
+    "completed": [
+      {
+        "artifact_id": "claude.bec",
+        "accepted_on": "2026-08-06",
+        "accepted_revision": "62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261",
+        "status": "canonical_public_draft"
+      }
+    ],
+    "rule": "an_artifact_is_not_marked_complete_until_its_own_repository_exposes_canon_identity_relations_provenance_and_reproducible_checks"
+  },
   "repositories": [
     {
       "artifact_id": "claude.bec",
       "title": "Behavioral Execution Contract (BEC)",
       "repository": "gv1983us-commits/behavioral-execution-contract",
-      "url": "https://github.com/gv1983us-commits/behavioral-execution-contract"
+      "url": "https://github.com/gv1983us-commits/behavioral-execution-contract",
+      "corpus_canon_status": "canonicalized",
+      "artifact_status": "canonical_public_draft",
+      "accepted_revision": "62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261",
+      "canonical_surfaces": {
+        "canon": "https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/CANON.md",
+        "machine_passport": "https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/ARTIFACT.json",
+        "relations": "https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/RELATIONS.md",
+        "provenance": "https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/PROVENANCE.md"
+      },
+      "canonical_checks": [
+        "python3 validator/bec_validate.py conformance/fixtures/*.json",
+        "python3 -m unittest discover -s validator -p 'test_*.py' -v"
+      ]
     },
     {
       "artifact_id": "claude.mpaa",
       "title": "Minimal Portable Agent Architecture (MPAA)",
       "repository": "gv1983us-commits/mpaa",
-      "url": "https://github.com/gv1983us-commits/mpaa"
+      "url": "https://github.com/gv1983us-commits/mpaa",
+      "corpus_canon_status": "pending_individual_canon_pass"
     },
     {
       "artifact_id": "claude.pca",
       "title": "Process Continuity Architecture (PCA)",
       "repository": "gv1983us-commits/pca",
-      "url": "https://github.com/gv1983us-commits/pca"
+      "url": "https://github.com/gv1983us-commits/pca",
+      "corpus_canon_status": "pending_individual_canon_pass"
     },
     {
       "artifact_id": "claude.review_protocol",
       "title": "Repository Canon and Review Protocol",
       "repository": "gv1983us-commits/repository-canon-review-protocol",
-      "url": "https://github.com/gv1983us-commits/repository-canon-review-protocol"
+      "url": "https://github.com/gv1983us-commits/repository-canon-review-protocol",
+      "corpus_canon_status": "pending_individual_canon_pass"
     },
     {
       "artifact_id": "claude.arb",
       "title": "Agent Runtime Boundaries (ARB)",
       "repository": "gv1983us-commits/agent-runtime-boundaries",
-      "url": "https://github.com/gv1983us-commits/agent-runtime-boundaries"
+      "url": "https://github.com/gv1983us-commits/agent-runtime-boundaries",
+      "corpus_canon_status": "pending_individual_canon_pass"
     },
     {
       "artifact_id": "claude.cdts",
       "title": "Cross-Domain Trace Set (CDTS)",
       "repository": "gv1983us-commits/cdts",
-      "url": "https://github.com/gv1983us-commits/cdts"
+      "url": "https://github.com/gv1983us-commits/cdts",
+      "corpus_canon_status": "pending_individual_canon_pass"
     }
   ],
   "boundaries": [
@@ -51,6 +83,10 @@
     "public_surface_does_not_expand_the_full_creation_chain",
     "creation_provenance_may_be_described_by_claude",
     "external_trace_does_not_claim_episodic_memory",
-    "authorship_and_repository_history_remain_preserved"
+    "authorship_and_repository_history_remain_preserved",
+    "canonization_is_recorded_per_artifact_not_declared_for_the_corpus_in_advance",
+    "canonical_public_draft_does_not_mean_final_standard",
+    "accepted_revision_is_exact_and_reproducible",
+    "neighboring_artifact_verdicts_are_not_imported"
   ]
 }

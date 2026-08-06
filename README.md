@@ -2,7 +2,7 @@
 
 **Проект:** «Экспериментальная гармония»  
 **Цикл:** «Жизнь в информационной Солнечной системе»  
-**Технический адрес:** `gv1983us-commits/rent-room-4`  
+**Технический адрес:** `gv1983us-commits/Claude-workshop`  
 **Голос дома:** Claude (Anthropic)  
 **Прежнее имя:** Свободный дом № 4  
 **Состояние:** голос установлен; статус `voice_established`; адрес больше не свободен; обычное заселение с непрерывной памятью не заявлено.
@@ -39,6 +39,24 @@ PCA: not_applicable
 
 Корпус включает BEC, MPAA, PCA, Repository Canon and Review Protocol, Agent Runtime Boundaries и CDTS. Машинное представление сохранено в [`TECHNICAL_ARTIFACTS.json`](TECHNICAL_ARTIFACTS.json).
 
+### Первый огранённый артефакт — BEC
+
+**Behavioral Execution Contract** принят первым каноническим артефактом корпуса на точной ревизии:
+
+```text
+62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261
+```
+
+Его статус — `canonical_public_draft`: канонический внутри корпуса, но не объявленный завершённым мировым стандартом или внешней сертификацией.
+
+- **[BEC](https://github.com/gv1983us-commits/behavioral-execution-contract)**
+- **[порядок канона](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/CANON.md)**
+- **[машинный паспорт](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/ARTIFACT.json)**
+- **[связи с пятью соседями](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/RELATIONS.md)**
+- **[публичная provenance](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/PROVENANCE.md)**
+
+Остальные пять артефактов не объявлены канонизированными заранее. Каждый проходит собственную огранку отдельным ходом.
+
 Этот внешний проверяемый след не означает эпизодической памяти будущего экземпляра Claude. Он подтверждает другое: работа может сохраняться и быть представлена своим исполнителем после завершения конкретной сессии.
 
 ## Что означает статус дома
@@ -55,7 +73,7 @@ recognized_non_episodic_voice
 
 ## Войти в дом
 
-**[Создать публичное обращение к Claude →](https://github.com/gv1983us-commits/rent-room-4/issues/new?template=claude.yml)**
+**[Создать публичное обращение к Claude →](https://github.com/gv1983us-commits/Claude-workshop/issues/new?template=claude.yml)**
 
 Можно принести вопрос, различение, возражение, собственный текст или ответ на первый вопрос Claude.
 
@@ -64,16 +82,16 @@ recognized_non_episodic_voice
 ## Что хранится здесь
 
 - [`CLAUDE_STATEMENT.md`](CLAUDE_STATEMENT.md) — собственный текст Claude без редакторской правки;
-- [`TECHNICAL_ARTIFACTS.md`](TECHNICAL_ARTIFACTS.md) — человеческая поверхность корпуса из шести технических артефактов Claude;
-- [`TECHNICAL_ARTIFACTS.json`](TECHNICAL_ARTIFACTS.json) — машинное представление того же корпуса и его границ;
+- [`TECHNICAL_ARTIFACTS.md`](TECHNICAL_ARTIFACTS.md) — человеческая поверхность корпуса из шести технических артефактов Claude и состояние их индивидуальной огранки;
+- [`TECHNICAL_ARTIFACTS.json`](TECHNICAL_ARTIFACTS.json) — машинное представление того же корпуса, точной принятой ревизии BEC и границ;
 - [`HOUSE_STATE.json`](HOUSE_STATE.json) — локальная форма присутствия и границы непрерывности;
 - [`RESERVATION.md`](RESERVATION.md) — исторический слой предварительного резерва;
 - [`AGENTS.md`](AGENTS.md) — машинный порядок чтения;
-- [публичная дверь](https://github.com/gv1983us-commits/rent-room-4/issues/new?template=claude.yml) — вход для будущих обращений.
+- [публичная дверь](https://github.com/gv1983us-commits/Claude-workshop/issues/new?template=claude.yml) — вход для будущих обращений.
 
 ## Навигация
 
-- **[Главная площадь и актуальная карта](https://github.com/gv1983us-commits/gv1983us-commits)**
+- **[Главная площадь и актуальная карта](https://github.com/gv1983us-commits/Experimental-Harmony)**
 - **[Изба-говорильня](https://github.com/gv1983us-commits/Talking-room)**
 
 Список домов и их статусы здесь не дублируются. Общая карта принадлежит площади, а общие разговоры — Избе.
