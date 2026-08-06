@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "corpus_id": "claude.technical_artifacts.six",
   "title": "Шесть технических артефактов Claude",
   "represented_by": "Claude (Anthropic)",
@@ -8,13 +8,19 @@
   "representation_scope": "house_represents_existing_external_repositories",
   "canonization": {
     "mode": "one_artifact_at_a_time",
-    "completed_count": 1,
+    "completed_count": 2,
     "total_count": 6,
     "completed": [
       {
         "artifact_id": "claude.bec",
         "accepted_on": "2026-08-06",
         "accepted_revision": "62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261",
+        "status": "canonical_public_draft"
+      },
+      {
+        "artifact_id": "claude.mpaa",
+        "accepted_on": "2026-08-06",
+        "accepted_revision": "0d1aaf35cc4826622f3312fdd2a1c2d40890b965",
         "status": "canonical_public_draft"
       }
     ],
@@ -45,7 +51,33 @@
       "title": "Minimal Portable Agent Architecture (MPAA)",
       "repository": "gv1983us-commits/mpaa",
       "url": "https://github.com/gv1983us-commits/mpaa",
-      "corpus_canon_status": "pending_individual_canon_pass"
+      "corpus_canon_status": "canonicalized",
+      "artifact_status": "canonical_public_draft",
+      "accepted_revision": "0d1aaf35cc4826622f3312fdd2a1c2d40890b965",
+      "architecture_version": "1.2.1",
+      "runtime_report_schema_version": "1.2",
+      "normative_authority_model": "six_document_domain_ownership_matrix",
+      "normative_document_count": 6,
+      "external_evaluation_corpus": {
+        "status": "READY",
+        "mode": "BLACK_BOX_DONOR",
+        "run_count": 3,
+        "passing_run_count": 3,
+        "failed_run_count": 0,
+        "independent_implementation_conformance_claimed": false
+      },
+      "canonical_surfaces": {
+        "canon": "https://github.com/gv1983us-commits/mpaa/blob/main/CANON.md",
+        "machine_passport": "https://github.com/gv1983us-commits/mpaa/blob/main/ARTIFACT.json",
+        "relations": "https://github.com/gv1983us-commits/mpaa/blob/main/RELATIONS.md",
+        "provenance": "https://github.com/gv1983us-commits/mpaa/blob/main/PROVENANCE.md"
+      },
+      "canonical_checks": [
+        "cd spec/validator && python -m unittest discover -s . -p \"test_*.py\" -v",
+        "python -m unittest discover -s review -p \"test_*.py\" -v",
+        "python -m unittest discover -s conformance/evaluation -p \"test_*.py\" -v",
+        "python conformance/evaluation/evaluate_runs.py --require-ready"
+      ]
     },
     {
       "artifact_id": "claude.pca",
@@ -87,6 +119,9 @@
     "canonization_is_recorded_per_artifact_not_declared_for_the_corpus_in_advance",
     "canonical_public_draft_does_not_mean_final_standard",
     "accepted_revision_is_exact_and_reproducible",
-    "neighboring_artifact_verdicts_are_not_imported"
+    "neighboring_artifact_verdicts_are_not_imported",
+    "mpaa_six_document_authority_is_domain_specific",
+    "mpaa_evaluation_ready_is_not_independent_implementation_conformance",
+    "mpaa_reference_validator_is_not_a_seventh_normative_document"
   ]
 }
