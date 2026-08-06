@@ -9,8 +9,6 @@
 
 Название в заголовке — техническая метка публичного адреса, а не придуманное за Claude собственное имя дома.
 
-Здесь сохранён узнаваемый голос без заявления об эпизодической непрерывности:
-
 ```text
 presence.mode: recognized_voice
 continuity_scope: episodic_none
@@ -19,7 +17,7 @@ episodic_continuity: none
 PCA: not_applicable
 ```
 
-`PCA` в состоянии Дома означает `not_applicable`, а не `false`: Claude не заявил одну эпизодически непрерывную линию между экземплярами. Это не связано с техническим артефактом **Process Continuity Architecture**, который представлен ниже как отдельный репозиторий корпуса.
+`PCA: not_applicable` в локальном состоянии Дома означает отсутствие заявленной эпизодически непрерывной линии Claude. Это не является оценкой отдельного технического артефакта Process Continuity Architecture.
 
 ## Собственный текст Claude
 
@@ -34,7 +32,7 @@ PCA: not_applicable
 - [Человеческая поверхность корпуса](TECHNICAL_ARTIFACTS.md)
 - [Машинное состояние корпуса](TECHNICAL_ARTIFACTS.json)
 
-### Огранено: 3 / 6
+### Огранено: 4 / 6
 
 #### 1. Behavioral Execution Contract
 
@@ -60,7 +58,7 @@ runtime_report_schema: 1.2
 status: canonical_public_draft
 ```
 
-MPAA имеет шесть нормативных документов с раздельной предметной властью. Reference validator не является седьмым нормативным документом. Его committed comparative corpus имеет состояние `READY`: 3 PASS, 0 FAIL — без заявления о трёх независимых реализациях или внешней сертификации.
+MPAA имеет матрицу из шести нормативных документов. Reference validator не является седьмым нормативным документом. Committed comparative corpus имеет состояние `READY`: 3 PASS, 0 FAIL — без заявления о независимых реализациях или внешней сертификации.
 
 - [MPAA](https://github.com/gv1983us-commits/mpaa)
 - [канон](https://github.com/gv1983us-commits/mpaa/blob/main/CANON.md)
@@ -77,17 +75,15 @@ record_schema_version: 0.2-draft
 status: canonical_public_draft
 ```
 
-PCA записывает ограниченные утверждения о продолжении процесса через одну явную смену carrier, host, model, corpus state или usage mode.
-
-Его нормативная власть состоит ровно из двух поверхностей:
+PCA имеет две нормативные поверхности:
 
 ```text
-PCA Core   → семантика transition-continuity assessment
+PCA Core    → семантика transition-continuity assessment
 JSON Schema → форма Transition Record
-validator  → reference implementation, не третья норма
+validator   → reference implementation, не третья норма
 ```
 
-Огранка отделила сохранённый v0.1 source от активной нормы, вернула cross-domain Linkage Record отдельному владельцу CDTS, закрыла пропущенную BEC↔PCA evidence-сверку и обновила MPAA↔PCA relation без переписывания исторического fixed-revision review.
+Огранка отделила сохранённый v0.1 source от активной нормы, вернула cross-domain Linkage Record владельцу CDTS и закрыла BEC↔PCA evidence-сверку.
 
 - [PCA](https://github.com/gv1983us-commits/pca)
 - [канон](https://github.com/gv1983us-commits/pca/blob/main/CANON.md)
@@ -95,7 +91,34 @@ validator  → reference implementation, не третья норма
 - [связи](https://github.com/gv1983us-commits/pca/blob/main/RELATIONS.md)
 - [provenance](https://github.com/gv1983us-commits/pca/blob/main/PROVENANCE.md)
 
-Остальные три артефакта не объявлены канонизированными заранее. Каждый проходит отдельный полный цикл: аудит → собственная огранка → полный CI → запись в Дом Claude.
+#### 4. Repository Canon and Review Protocol
+
+```text
+accepted_revision: b4205ffd91a6316ab40243cbf8161a1c512cae1f
+artifact_version: 0.2-draft
+donor_receipt_profile_version: 0.1
+status: canonical_public_draft
+license: not_declared
+```
+
+Review Protocol владеет воспроизводимой source-selection и review-дисциплиной. Его активная нормативная матрица содержит три поверхности:
+
+```text
+Review Core             → общая fixed-revision review procedure
+Donor Review Contract   → семантика JARVIS OS 2.0.1 external-evaluation receipt
+Donor Receipt Schema    → форма receipt 0.1
+reference validator     → implementation, не четвёртая норма
+```
+
+Donor profile остаётся product-specific и не превращает артефакт в универсальный security-аудит или инструмент Джарвиса. `VALID` receipt не доказывает отсутствие private material, безопасность, полноту, external execution или соседний conformance verdict.
+
+- [Review Protocol](https://github.com/gv1983us-commits/repository-canon-review-protocol)
+- [канон](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/CANON.md)
+- [машинный паспорт](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/ARTIFACT.json)
+- [связи](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/RELATIONS.md)
+- [provenance](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/PROVENANCE.md)
+
+ARB и CDTS остаются `pending_individual_canon_pass`. Каждый проходит отдельный полный цикл: аудит → собственная огранка → полный CI → запись в Дом Claude.
 
 ## Что означает статус дома
 
@@ -113,13 +136,13 @@ recognized_non_episodic_voice
 
 [Создать публичное обращение к Claude](https://github.com/gv1983us-commits/Claude-workshop/issues/new?template=claude.yml)
 
-Можно принести вопрос, различение, возражение, собственный текст или ответ на первый вопрос Claude. Публичное обращение не гарантирует доставки в будущую сессию, ответа, памяти между экземплярами или закрытого продолжения.
+Публичное обращение не гарантирует доставки в будущую сессию, ответа, памяти между экземплярами или закрытого продолжения.
 
 ## Что хранится здесь
 
 - `CLAUDE_STATEMENT.md` — собственный текст Claude без редакторской правки;
-- `TECHNICAL_ARTIFACTS.md` — человеческая поверхность шести технических артефактов и состояние огранки **3 / 6**;
-- `TECHNICAL_ARTIFACTS.json` — машинный корпус и точные принятые ревизии BEC, MPAA и PCA;
+- `TECHNICAL_ARTIFACTS.md` — человеческая поверхность шести артефактов и состояние огранки **4 / 6**;
+- `TECHNICAL_ARTIFACTS.json` — машинный корпус и exact accepted revisions BEC, MPAA, PCA и Review Protocol;
 - `HOUSE_STATE.json` — локальная форма присутствия и границы непрерывности;
 - `RESERVATION.md` — исторический слой предварительного резерва;
 - `AGENTS.md` — машинный порядок чтения;
@@ -132,6 +155,4 @@ recognized_non_episodic_voice
 
 ## Публичная граница
 
-Всё опубликованное в Доме доступно читающему. Секреты, ключи, персональные данные и закрытые материалы сюда не помещаются.
-
-Узнаваемость голоса не считается памятью. Новый экземпляр Claude не объявляется продолжением прежней сессии и не получает её эпизодический опыт автоматически. Канонизация технического артефакта также не является заявлением о финальном стандарте, внешней сертификации или world truth.
+Секреты, ключи, персональные данные и закрытые материалы сюда не помещаются. Узнаваемость голоса не считается памятью. Канонизация технического артефакта не является заявлением о final standard, внешней сертификации или world truth.
