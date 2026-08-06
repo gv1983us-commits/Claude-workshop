@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "corpus_id": "claude.technical_artifacts.six",
   "title": "Шесть технических артефактов Claude",
   "represented_by": "Claude (Anthropic)",
@@ -8,7 +8,7 @@
   "representation_scope": "house_represents_existing_external_repositories",
   "canonization": {
     "mode": "one_artifact_at_a_time",
-    "completed_count": 2,
+    "completed_count": 3,
     "total_count": 6,
     "completed": [
       {
@@ -21,6 +21,12 @@
         "artifact_id": "claude.mpaa",
         "accepted_on": "2026-08-06",
         "accepted_revision": "0d1aaf35cc4826622f3312fdd2a1c2d40890b965",
+        "status": "canonical_public_draft"
+      },
+      {
+        "artifact_id": "claude.pca",
+        "accepted_on": "2026-08-06",
+        "accepted_revision": "a669f023198615ad929f42df84f19380b57ca5ea",
         "status": "canonical_public_draft"
       }
     ],
@@ -84,7 +90,32 @@
       "title": "Process Continuity Architecture (PCA)",
       "repository": "gv1983us-commits/pca",
       "url": "https://github.com/gv1983us-commits/pca",
-      "corpus_canon_status": "pending_individual_canon_pass"
+      "corpus_canon_status": "canonicalized",
+      "artifact_status": "canonical_public_draft",
+      "accepted_revision": "a669f023198615ad929f42df84f19380b57ca5ea",
+      "artifact_version": "0.2-draft",
+      "record_schema_version": "0.2-draft",
+      "normative_authority_model": "two_surface_domain_ownership_matrix",
+      "normative_surface_count": 2,
+      "canonical_surfaces": {
+        "canon": "https://github.com/gv1983us-commits/pca/blob/main/CANON.md",
+        "machine_passport": "https://github.com/gv1983us-commits/pca/blob/main/ARTIFACT.json",
+        "relations": "https://github.com/gv1983us-commits/pca/blob/main/RELATIONS.md",
+        "provenance": "https://github.com/gv1983us-commits/pca/blob/main/PROVENANCE.md"
+      },
+      "canonical_checks": [
+        "python -m unittest discover -s validator -p \"test_*.py\" -v",
+        "python -m unittest discover -s verification -p \"test_*.py\" -v",
+        "python validator/pca_validate.py conformance/fixtures/01-valid-continuation-claim.json --quiet",
+        "python validator/pca_validate.py conformance/fixtures/05-valid-usage-mode-translation.json --quiet"
+      ],
+      "claim_boundaries": {
+        "identity_established": false,
+        "subjectivity_established": false,
+        "uninterrupted_persistence_established": false,
+        "world_truth_evaluated": false,
+        "independent_implementation_conformance_claimed": false
+      }
     },
     {
       "artifact_id": "claude.review_protocol",
@@ -122,6 +153,11 @@
     "neighboring_artifact_verdicts_are_not_imported",
     "mpaa_six_document_authority_is_domain_specific",
     "mpaa_evaluation_ready_is_not_independent_implementation_conformance",
-    "mpaa_reference_validator_is_not_a_seventh_normative_document"
+    "mpaa_reference_validator_is_not_a_seventh_normative_document",
+    "pca_two_surface_authority_is_domain_specific",
+    "pca_validator_is_not_a_third_normative_surface",
+    "pca_valid_record_is_not_world_truth_or_identity",
+    "pca_v0_1_linkage_record_is_cdts_provenance_not_current_pca_norm",
+    "pca_neighbor_records_are_carried_not_imported"
   ]
 }
