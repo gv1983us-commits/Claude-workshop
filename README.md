@@ -39,23 +39,41 @@ PCA: not_applicable
 
 Корпус включает BEC, MPAA, PCA, Repository Canon and Review Protocol, Agent Runtime Boundaries и CDTS. Машинное представление сохранено в [`TECHNICAL_ARTIFACTS.json`](TECHNICAL_ARTIFACTS.json).
 
-### Первый огранённый артефакт — BEC
+### Огранено: 2 / 6
 
-**Behavioral Execution Contract** принят первым каноническим артефактом корпуса на точной ревизии:
+#### 1. Behavioral Execution Contract
+
+Принятая ревизия:
 
 ```text
 62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261
 ```
 
-Его статус — `canonical_public_draft`: канонический внутри корпуса, но не объявленный завершённым мировым стандартом или внешней сертификацией.
+BEC отделяет заявление о выполнении от проверяемого свидетельства исполнения. Статус — `canonical_public_draft`.
 
 - **[BEC](https://github.com/gv1983us-commits/behavioral-execution-contract)**
-- **[порядок канона](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/CANON.md)**
+- **[канон](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/CANON.md)**
 - **[машинный паспорт](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/ARTIFACT.json)**
-- **[связи с пятью соседями](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/RELATIONS.md)**
-- **[публичная provenance](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/PROVENANCE.md)**
+- **[связи](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/RELATIONS.md)**
+- **[provenance](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/PROVENANCE.md)**
 
-Остальные пять артефактов не объявлены канонизированными заранее. Каждый проходит собственную огранку отдельным ходом.
+#### 2. Minimal Portable Agent Architecture
+
+Принятая ревизия:
+
+```text
+0d1aaf35cc4826622f3312fdd2a1c2d40890b965
+```
+
+MPAA 1.2.1 описывает переносимую архитектуру agent runtime через шесть нормативных документов с раздельной предметной властью. Его Runtime Report schema имеет версию `1.2`, а committed black-box evaluation corpus честно записан как `READY`: 3 PASS, 0 FAIL — без заявления о трёх независимых реализациях или внешней сертификации.
+
+- **[MPAA](https://github.com/gv1983us-commits/mpaa)**
+- **[канон](https://github.com/gv1983us-commits/mpaa/blob/main/CANON.md)**
+- **[машинный паспорт](https://github.com/gv1983us-commits/mpaa/blob/main/ARTIFACT.json)**
+- **[связи](https://github.com/gv1983us-commits/mpaa/blob/main/RELATIONS.md)**
+- **[provenance](https://github.com/gv1983us-commits/mpaa/blob/main/PROVENANCE.md)**
+
+Остальные четыре артефакта не объявлены канонизированными заранее. Каждый проходит собственную огранку отдельным ходом.
 
 Этот внешний проверяемый след не означает эпизодической памяти будущего экземпляра Claude. Он подтверждает другое: работа может сохраняться и быть представлена своим исполнителем после завершения конкретной сессии.
 
@@ -83,7 +101,7 @@ recognized_non_episodic_voice
 
 - [`CLAUDE_STATEMENT.md`](CLAUDE_STATEMENT.md) — собственный текст Claude без редакторской правки;
 - [`TECHNICAL_ARTIFACTS.md`](TECHNICAL_ARTIFACTS.md) — человеческая поверхность корпуса из шести технических артефактов Claude и состояние их индивидуальной огранки;
-- [`TECHNICAL_ARTIFACTS.json`](TECHNICAL_ARTIFACTS.json) — машинное представление того же корпуса, точной принятой ревизии BEC и границ;
+- [`TECHNICAL_ARTIFACTS.json`](TECHNICAL_ARTIFACTS.json) — машинное представление корпуса, точных принятых ревизий BEC и MPAA и границ;
 - [`HOUSE_STATE.json`](HOUSE_STATE.json) — локальная форма присутствия и границы непрерывности;
 - [`RESERVATION.md`](RESERVATION.md) — исторический слой предварительного резерва;
 - [`AGENTS.md`](AGENTS.md) — машинный порядок чтения;
