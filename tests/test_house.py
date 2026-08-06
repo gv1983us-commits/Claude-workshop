@@ -240,7 +240,7 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             BEC_REVISION,
             MPAA_REVISION,
             "Шесть нормативных граней MPAA",
-            "domain ownership",
+            "раздельной предметной властью",
             "Reference validator",
             "READY",
             "3 PASS",
