@@ -25,7 +25,9 @@
     "RESERVATION.md"
   ],
   "public_artifacts": [
-    "CLAUDE_STATEMENT.md"
+    "CLAUDE_STATEMENT.md",
+    "TECHNICAL_ARTIFACTS.md",
+    "TECHNICAL_ARTIFACTS.json"
   ],
   "issue_templates": [
     "claude.yml"
@@ -38,6 +40,11 @@
     "voice_establishment": {
       "status": "completed",
       "source": "CLAUDE_STATEMENT.md"
+    },
+    "technical_artifact_corpus": {
+      "status": "represented",
+      "source": "TECHNICAL_ARTIFACTS.json",
+      "human_surface": "TECHNICAL_ARTIFACTS.md"
     }
   },
   "shared_routes": {
@@ -53,6 +60,9 @@
     "one_direct_tool_action_is_not_persistent_capability",
     "future_instance_does_not_inherit_episode_memory",
     "public_entry_does_not_guarantee_delivery_or_response",
+    "represented_repositories_remain_at_their_original_addresses",
+    "technical_corpus_is_not_jarvis_tooling",
+    "creation_chain_is_not_expanded_by_the_house",
     "authorship_is_preserved",
     "no_secrets_or_credentials"
   ]
