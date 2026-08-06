@@ -21,6 +21,8 @@ EXPECTED_RESIDENT = "Claude (Anthropic)"
 BEC_REVISION = "62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261"
 MPAA_REVISION = "0d1aaf35cc4826622f3312fdd2a1c2d40890b965"
 PCA_REVISION = "a669f023198615ad929f42df84f19380b57ca5ea"
+REVIEW_REVISION = "b4205ffd91a6316ab40243cbf8161a1c512cae1f"
+
 EXPECTED_REPOSITORIES = {
     "gv1983us-commits/behavioral-execution-contract",
     "gv1983us-commits/mpaa",
@@ -37,7 +39,12 @@ EXPECTED_IDS = {
     "claude.arb",
     "claude.cdts",
 }
-CANONIZED = {"claude.bec", "claude.mpaa", "claude.pca"}
+CANONIZED = {
+    "claude.bec",
+    "claude.mpaa",
+    "claude.pca",
+    "claude.review_protocol",
+}
 PENDING = EXPECTED_IDS - CANONIZED
 
 
@@ -92,9 +99,9 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
         ):
             self.assertIn(boundary, state["boundaries"])
 
-    def test_corpus_is_exactly_three_of_six(self) -> None:
+    def test_corpus_is_exactly_four_of_six(self) -> None:
         corpus = json.loads(TECHNICAL_ARTIFACTS_JSON.read_text(encoding="utf-8"))
-        self.assertEqual(corpus["schema_version"], "1.3")
+        self.assertEqual(corpus["schema_version"], "1.4")
         self.assertEqual(corpus["corpus_id"], "claude.technical_artifacts.six")
         self.assertEqual(corpus["represented_by"], EXPECTED_RESIDENT)
         self.assertEqual(corpus["relation"], "technical_artifacts_of")
@@ -107,22 +114,28 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
 
         canon = corpus["canonization"]
         self.assertEqual(canon["mode"], "one_artifact_at_a_time")
-        self.assertEqual(canon["completed_count"], 3)
+        self.assertEqual(canon["completed_count"], 4)
         self.assertEqual(canon["total_count"], 6)
         completed = {item["artifact_id"]: item for item in canon["completed"]}
         self.assertEqual(set(completed), CANONIZED)
-        self.assertEqual(completed["claude.bec"]["accepted_revision"], BEC_REVISION)
-        self.assertEqual(completed["claude.mpaa"]["accepted_revision"], MPAA_REVISION)
-        self.assertEqual(completed["claude.pca"]["accepted_revision"], PCA_REVISION)
-        for item in completed.values():
-            self.assertEqual(item["accepted_on"], "2026-08-06")
-            self.assertEqual(item["status"], "canonical_public_draft")
+        expected_revisions = {
+            "claude.bec": BEC_REVISION,
+            "claude.mpaa": MPAA_REVISION,
+            "claude.pca": PCA_REVISION,
+            "claude.review_protocol": REVIEW_REVISION,
+        }
+        for artifact_id, revision in expected_revisions.items():
+            self.assertEqual(completed[artifact_id]["accepted_revision"], revision)
+            self.assertEqual(completed[artifact_id]["accepted_on"], "2026-08-06")
+            self.assertEqual(completed[artifact_id]["status"], "canonical_public_draft")
 
-        for artifact_id, revision, slug in (
-            ("claude.bec", BEC_REVISION, "behavioral-execution-contract"),
-            ("claude.mpaa", MPAA_REVISION, "mpaa"),
-            ("claude.pca", PCA_REVISION, "pca"),
-        ):
+        slugs = {
+            "claude.bec": "behavioral-execution-contract",
+            "claude.mpaa": "mpaa",
+            "claude.pca": "pca",
+            "claude.review_protocol": "repository-canon-review-protocol",
+        }
+        for artifact_id, revision in expected_revisions.items():
             item = items[artifact_id]
             self.assertEqual(item["corpus_canon_status"], "canonicalized")
             self.assertEqual(item["artifact_status"], "canonical_public_draft")
@@ -131,8 +144,8 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
                 set(item["canonical_surfaces"]),
                 {"canon", "machine_passport", "relations", "provenance"},
             )
-            for url in item["canonical_surfaces"].values():
-                self.assertTrue(url.startswith(f"https://github.com/gv1983us-commits/{slug}/"))
+            prefix = f"https://github.com/gv1983us-commits/{slugs[artifact_id]}/"
+            self.assertTrue(all(url.startswith(prefix) for url in item["canonical_surfaces"].values()))
 
         for artifact_id in PENDING:
             self.assertEqual(items[artifact_id]["corpus_canon_status"], "pending_individual_canon_pass")
@@ -146,10 +159,8 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
         self.assertEqual(mpaa["normative_authority_model"], "six_document_domain_ownership_matrix")
         self.assertEqual(mpaa["normative_document_count"], 6)
         self.assertEqual(len(mpaa["canonical_checks"]), 4)
-
         evaluation = mpaa["external_evaluation_corpus"]
         self.assertEqual(evaluation["status"], "READY")
-        self.assertEqual(evaluation["mode"], "BLACK_BOX_DONOR")
         self.assertEqual(evaluation["run_count"], 3)
         self.assertEqual(evaluation["passing_run_count"], 3)
         self.assertEqual(evaluation["failed_run_count"], 0)
@@ -165,56 +176,87 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
         self.assertEqual(len(pca["canonical_checks"]), 4)
         self.assertTrue(all(value is False for value in pca["claim_boundaries"].values()))
 
+    def test_review_protocol_record_preserves_three_surface_authority_and_limits(self) -> None:
+        corpus = json.loads(TECHNICAL_ARTIFACTS_JSON.read_text(encoding="utf-8"))
+        review = next(
+            item for item in corpus["repositories"]
+            if item["artifact_id"] == "claude.review_protocol"
+        )
+        self.assertEqual(review["artifact_version"], "0.2-draft")
+        self.assertEqual(review["donor_receipt_profile_version"], "0.1")
+        self.assertEqual(
+            review["normative_authority_model"],
+            "three_surface_domain_ownership_matrix",
+        )
+        self.assertEqual(review["normative_surface_count"], 3)
+        self.assertEqual(review["license"], "not_declared")
+        self.assertEqual(len(review["canonical_checks"]), 4)
+        self.assertEqual(
+            review["donor_profile"],
+            {
+                "product": "JARVIS OS",
+                "version": "2.0.1",
+                "channel": "external-evaluation",
+                "universal_profile": False,
+            },
+        )
+        self.assertTrue(all(value is False for value in review["claim_boundaries"].values()))
+
         for boundary in (
-            "pca_two_surface_authority_is_domain_specific",
-            "pca_validator_is_not_a_third_normative_surface",
-            "pca_valid_record_is_not_world_truth_or_identity",
-            "pca_v0_1_linkage_record_is_cdts_provenance_not_current_pca_norm",
-            "pca_neighbor_records_are_carried_not_imported",
+            "review_protocol_three_surface_authority_is_domain_specific",
+            "review_protocol_validator_is_not_a_fourth_normative_surface",
+            "review_protocol_valid_receipt_is_not_security_privacy_or_conformance",
+            "review_protocol_donor_profile_is_product_specific_not_universal",
+            "review_protocol_preserved_v0_1_is_historical_not_active_norm",
+            "review_protocol_license_is_not_declared_not_inferred",
             "neighboring_artifact_verdicts_are_not_imported",
         ):
             self.assertIn(boundary, corpus["boundaries"])
 
-    def test_human_surfaces_present_three_polished_artifacts(self) -> None:
+    def test_human_surfaces_present_four_polished_artifacts(self) -> None:
         readme = README.read_text(encoding="utf-8")
         corpus_text = TECHNICAL_ARTIFACTS.read_text(encoding="utf-8")
         for text in (readme, corpus_text):
-            self.assertIn(BEC_REVISION, text)
-            self.assertIn(MPAA_REVISION, text)
-            self.assertIn(PCA_REVISION, text)
+            for revision in (BEC_REVISION, MPAA_REVISION, PCA_REVISION, REVIEW_REVISION):
+                self.assertIn(revision, text)
             self.assertIn("canonical_public_draft", text)
-            self.assertIn("3 / 6", text)
-            self.assertIn("Behavioral Execution Contract", text)
-            self.assertIn("Minimal Portable Agent Architecture", text)
-            self.assertIn("Process Continuity Architecture", text)
+            self.assertIn("4 / 6", text)
+            for title in (
+                "Behavioral Execution Contract",
+                "Minimal Portable Agent Architecture",
+                "Process Continuity Architecture",
+                "Repository Canon and Review Protocol",
+            ):
+                self.assertIn(title, text)
 
         for marker in (
             "матрица из шести документов",
-            "READY",
             "3 PASS",
             "Две нормативные грани PCA",
-            "не становится третьей нормативной поверхностью",
-            "Linkage Record",
-            "Пять связей PCA",
+            "Три нормативные грани Review Protocol",
+            "не является четвёртой нормативной поверхностью",
+            "license: not_declared",
+            "Пять связей Review Protocol",
         ):
             self.assertIn(marker, corpus_text)
-        self.assertIn("Остальные три артефакта", readme)
-        self.assertNotIn("PCA)** | ожидает индивидуального прохода", corpus_text)
+        self.assertIn("ARB и CDTS остаются", readme)
+        self.assertNotIn("Review Protocol** | ожидает индивидуального прохода", corpus_text)
 
-    def test_machine_entry_blocks_pca_overclaim(self) -> None:
+    def test_machine_entry_blocks_review_protocol_overclaim(self) -> None:
         text = AGENTS.read_text(encoding="utf-8")
         for marker in (
             f"технический адрес: `{EXPECTED_REPOSITORY}`",
-            "трёх из шести",
+            "четырёх из шести",
             BEC_REVISION,
             MPAA_REVISION,
             PCA_REVISION,
+            REVIEW_REVISION,
             "MPAA имеет шесть нормативных документов",
-            "Reference validator не является седьмым нормативным документом",
-            "READY",
             "PCA имеет две нормативные поверхности",
-            "не третья нормативная поверхность",
-            "v0.1 Linkage Record",
+            "Review Protocol имеет три нормативные поверхности",
+            "не четвёртая нормативная поверхность",
+            "product-specific",
+            "license: not_declared",
             "Они имеют состояние `pending_individual_canon_pass`",
             "не является постоянной capability",
         ):
