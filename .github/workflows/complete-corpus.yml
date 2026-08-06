@@ -5,6 +5,7 @@ on:
     paths:
       - tools/complete_cdts_corpus.py
       - tools/fix_complete_cdts_corpus.py
+      - tools/fix_complete_cdts_bullet.py
       - .github/workflows/complete-corpus.yml
 
 permissions:
@@ -27,6 +28,7 @@ jobs:
       - name: Promote corpus to six of six
         run: |
           python tools/fix_complete_cdts_corpus.py
+          python tools/fix_complete_cdts_bullet.py
           python tools/complete_cdts_corpus.py
 
       - name: Validate completed corpus
@@ -36,7 +38,7 @@ jobs:
           python -m unittest discover -s tests -p "test_*.py" -v
 
       - name: Prepare pushable state
-        run: rm tools/complete_cdts_corpus.py tools/fix_complete_cdts_corpus.py
+        run: rm tools/complete_cdts_corpus.py tools/fix_complete_cdts_corpus.py tools/fix_complete_cdts_bullet.py
 
       - name: Commit completed corpus
         run: |
