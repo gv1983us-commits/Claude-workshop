@@ -36,10 +36,10 @@
 | 2 | **Minimal Portable Agent Architecture (MPAA)** | **канонизирован как public draft** |
 | 3 | **Process Continuity Architecture (PCA)** | **канонизирован как public draft** |
 | 4 | **Repository Canon and Review Protocol** | **канонизирован как public draft** |
-| 5 | **Agent Runtime Boundaries (ARB)** | ожидает индивидуального прохода |
+| 5 | **Agent Runtime Boundaries (ARB)** | **канонизирован как public draft** |
 | 6 | **Cross-Domain Trace Set (CDTS)** | ожидает индивидуального прохода |
 
-Готово: **4 / 6**. ARB и CDTS не объявляются канонизированными заранее.
+Готово: **5 / 6**. CDTS не объявляется канонизированным заранее.
 
 ---
 
@@ -313,6 +313,90 @@ Review Protocol стал четвёртым огранённым камнем: �
 
 ---
 
+## 5. Agent Runtime Boundaries — пятый принятый артефакт
+
+**Agent Runtime Boundaries (ARB)** — ненормативная аналитическая карта различий между model reasoning, runtime execution, evidence, delivery, persistence, retrieval, working state, commitment и continuation.
+
+Его центральная граница:
+
+```text
+analytical map != normative specification
+```
+
+```text
+accepted_revision: bcf9f628ee1d7c2075673b00f660674680bb6f62
+artifact_version: 0.3-draft
+status: canonical_public_draft
+license: Apache-2.0
+```
+
+### Нулевая нормативная архитектура ARB
+
+ARB намеренно имеет **ноль нормативных поверхностей**:
+
+```text
+normative_surface_count: 0
+analytical_surface_count: 4
+proposal_surface_count: 1
+```
+
+| Поверхность | Роль |
+|---|---|
+| `ARB-00` Scope and Status | scope, claim classes и epistemic boundary |
+| `ARB-01` Functional Boundaries | разделение независимо ломающихся функций |
+| `ARB-02` User Control Plane and Observability | control plane, authorization surfaces, telemetry и projection |
+| `ARB-04` Cross-Artifact Claim Boundaries | fixed-revision mappings и forbidden inferences |
+| `ARB-03` Closure, Provenance and Next Action | явное непринятое operational proposal |
+
+```text
+ARB-03 adopted: false
+normative_owner_selected: false
+multi_implementation_conformance_claimed: false
+```
+
+Канонизация не превратила ARB в стандарт. Она сделала исполнимым именно отсутствие внешней нормативной силы.
+
+### Что исправила огранка ARB
+
+1. **Сохранена собственная природа артефакта.** Вместо искусственного Core закреплены четыре аналитические поверхности, одна proposal и ноль нормативных.
+2. **ARB-03 изолирован.** Closure record не создаёт delivery, persistence, retrieval, working-state admission, commitment или continuation самим наличием поля.
+3. **Обновлены четыре исторические связи.** Активная карта теперь читает принятые SHA BEC, MPAA, PCA и Review Protocol, не переписывая июльские fixed-review traces.
+4. **Добавлена пятая связь с CDTS.** CDTS может ссылаться на ARB как на analytical context, но не может объявлять ARB normative owner.
+5. **Разведена полная цепочка событий.**
+
+```text
+reasoning about an action != execution
+visible status != execution evidence
+delivered != persisted
+persisted != retrievable
+retrievable != admitted into working state
+working state present != committed
+committed != PCA process continuation
+process continuation != identity or memory
+```
+
+### Канонические поверхности ARB
+
+- [репозиторий](https://github.com/gv1983us-commits/agent-runtime-boundaries)
+- [CANON.md](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/CANON.md)
+- [ARTIFACT.json](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/ARTIFACT.json)
+- [RELATIONS.md](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/RELATIONS.md)
+- [PROVENANCE.md](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/PROVENANCE.md)
+
+### Проверка ARB
+
+```bash
+python -m unittest discover -s review -p "test_*.py" -v
+python -m json.tool ARTIFACT.json >/dev/null
+git -c core.whitespace=-blank-at-eol show --check --oneline HEAD
+```
+
+Полный контур прошёл на Python 3.10, 3.11, 3.12 и 3.13: machine passport, zero-normative invariant, claim classes, proposal isolation, five-neighbor relations, Markdown integrity, sensitive-marker checks и whitespace policy.
+
+ARB стал пятым огранённым камнем: его аналитическая власть, proposal boundary, происхождение, связи и пределы вывода теперь принадлежат точным поверхностям.
+
+---
+
 ## Полный корпус
 
 | Артефакт | Собственный предмет | Исходный репозиторий |
@@ -334,4 +418,4 @@ Review Protocol стал четвёртым огранённым камнем: �
 точная ревизия + зелёный CI ≠ world truth
 ```
 
-Следующий камень начинается только после полного принятия текущего. Состояние после Review Protocol: **4 / 6**.
+Следующий камень начинается только после полного принятия текущего. Состояние после ARB: **5 / 6**.

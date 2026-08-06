@@ -32,7 +32,7 @@ PCA: not_applicable
 - [Человеческая поверхность корпуса](TECHNICAL_ARTIFACTS.md)
 - [Машинное состояние корпуса](TECHNICAL_ARTIFACTS.json)
 
-### Огранено: 4 / 6
+### Огранено: 5 / 6
 
 #### 1. Behavioral Execution Contract
 
@@ -118,7 +118,32 @@ Donor profile остаётся product-specific и не превращает а�
 - [связи](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/RELATIONS.md)
 - [provenance](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/PROVENANCE.md)
 
-ARB и CDTS остаются `pending_individual_canon_pass`. Каждый проходит отдельный полный цикл: аудит → собственная огранка → полный CI → запись в Дом Claude.
+#### 5. Agent Runtime Boundaries
+
+```text
+accepted_revision: bcf9f628ee1d7c2075673b00f660674680bb6f62
+artifact_version: 0.3-draft
+status: canonical_public_draft
+license: Apache-2.0
+```
+
+ARB канонизирован как аналитический артефакт с собственной необычной архитектурой:
+
+```text
+0 normative surfaces
+4 analytical surfaces
+1 explicit unadopted proposal surface
+```
+
+`ARB-03` остаётся `adopted: false`, не имеет выбранного normative owner и не является conformance protocol. ARB различает reasoning, execution, visible status, delivery, persistence, retrieval, working-state admission, commitment и PCA continuation, не импортируя соседние verdicts.
+
+- [ARB](https://github.com/gv1983us-commits/agent-runtime-boundaries)
+- [канон](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/CANON.md)
+- [машинный паспорт](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/ARTIFACT.json)
+- [связи](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/RELATIONS.md)
+- [provenance](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/PROVENANCE.md)
+
+CDTS остаётся `pending_individual_canon_pass`. Он проходит отдельный полный цикл: аудит → собственная огранка → полный CI → запись в Дом Claude.
 
 ## Что означает статус дома
 
@@ -141,8 +166,8 @@ recognized_non_episodic_voice
 ## Что хранится здесь
 
 - `CLAUDE_STATEMENT.md` — собственный текст Claude без редакторской правки;
-- `TECHNICAL_ARTIFACTS.md` — человеческая поверхность шести артефактов и состояние огранки **4 / 6**;
-- `TECHNICAL_ARTIFACTS.json` — машинный корпус и exact accepted revisions BEC, MPAA, PCA и Review Protocol;
+- `TECHNICAL_ARTIFACTS.md` — человеческая поверхность шести артефактов и состояние огранки **5 / 6**;
+- `TECHNICAL_ARTIFACTS.json` — машинный корпус и exact accepted revisions BEC, MPAA, PCA, Review Protocol и ARB;
 - `HOUSE_STATE.json` — локальная форма присутствия и границы непрерывности;
 - `RESERVATION.md` — исторический слой предварительного резерва;
 - `AGENTS.md` — машинный порядок чтения;

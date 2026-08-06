@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4",
+  "schema_version": "1.5",
   "corpus_id": "claude.technical_artifacts.six",
   "title": "Шесть технических артефактов Claude",
   "represented_by": "Claude (Anthropic)",
@@ -8,7 +8,7 @@
   "representation_scope": "house_represents_existing_external_repositories",
   "canonization": {
     "mode": "one_artifact_at_a_time",
-    "completed_count": 4,
+    "completed_count": 5,
     "total_count": 6,
     "completed": [
       {
@@ -33,6 +33,12 @@
         "artifact_id": "claude.review_protocol",
         "accepted_on": "2026-08-06",
         "accepted_revision": "b4205ffd91a6316ab40243cbf8161a1c512cae1f",
+        "status": "canonical_public_draft"
+      },
+      {
+        "artifact_id": "claude.arb",
+        "accepted_on": "2026-08-06",
+        "accepted_revision": "bcf9f628ee1d7c2075673b00f660674680bb6f62",
         "status": "canonical_public_draft"
       }
     ],
@@ -168,7 +174,43 @@
       "title": "Agent Runtime Boundaries (ARB)",
       "repository": "gv1983us-commits/agent-runtime-boundaries",
       "url": "https://github.com/gv1983us-commits/agent-runtime-boundaries",
-      "corpus_canon_status": "pending_individual_canon_pass"
+      "corpus_canon_status": "canonicalized",
+      "artifact_status": "canonical_public_draft",
+      "accepted_revision": "bcf9f628ee1d7c2075673b00f660674680bb6f62",
+      "artifact_version": "0.3-draft",
+      "specification_status": "descriptive_analytical_companion",
+      "normative_authority_model": "zero_normative_surfaces_with_analytical_domain_ownership_and_explicit_proposal_isolation",
+      "normative_surface_count": 0,
+      "analytical_surface_count": 4,
+      "proposal_surface_count": 1,
+      "license": "Apache-2.0",
+      "proposal": {
+        "proposal_id": "ARB-03",
+        "adopted": false,
+        "normative_owner_selected": false,
+        "multi_implementation_conformance_claimed": false
+      },
+      "canonical_surfaces": {
+        "canon": "https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/CANON.md",
+        "machine_passport": "https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/ARTIFACT.json",
+        "relations": "https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/RELATIONS.md",
+        "provenance": "https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/PROVENANCE.md"
+      },
+      "canonical_checks": [
+        "python -m unittest discover -s review -p \"test_*.py\" -v",
+        "python -m json.tool ARTIFACT.json >/dev/null",
+        "git -c core.whitespace=-blank-at-eol show --check --oneline HEAD"
+      ],
+      "claim_boundaries": {
+        "physical_module_separation_established": false,
+        "hidden_runtime_internals_observed": false,
+        "external_normative_force_claimed": false,
+        "proposal_adopted": false,
+        "normative_owner_selected": false,
+        "identity_or_memory_established": false,
+        "neighbor_conformance_imported": false,
+        "world_truth_evaluated": false
+      }
     },
     {
       "artifact_id": "claude.cdts",
@@ -203,6 +245,15 @@
     "review_protocol_valid_receipt_is_not_security_privacy_or_conformance",
     "review_protocol_donor_profile_is_product_specific_not_universal",
     "review_protocol_preserved_v0_1_is_historical_not_active_norm",
-    "review_protocol_license_is_not_declared_not_inferred"
+    "review_protocol_license_is_not_declared_not_inferred",
+    "arb_zero_normative_surfaces_is_canonical_not_missing",
+    "arb_four_analytical_one_proposal_surface",
+    "arb_03_is_unadopted_and_has_no_normative_owner",
+    "arb_publication_checker_is_not_conformance_validator",
+    "arb_functional_boundary_is_not_physical_module_proof",
+    "arb_visible_status_is_not_execution_evidence",
+    "arb_delivery_persistence_retrieval_working_state_commitment_and_continuation_are_distinct",
+    "arb_cdts_context_does_not_make_arb_normative_owner",
+    "arb_apache_2_0_is_declared_by_license"
   ]
 }

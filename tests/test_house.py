@@ -22,6 +22,7 @@ BEC_REVISION = "62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261"
 MPAA_REVISION = "0d1aaf35cc4826622f3312fdd2a1c2d40890b965"
 PCA_REVISION = "a669f023198615ad929f42df84f19380b57ca5ea"
 REVIEW_REVISION = "b4205ffd91a6316ab40243cbf8161a1c512cae1f"
+ARB_REVISION = "bcf9f628ee1d7c2075673b00f660674680bb6f62"
 
 EXPECTED_REPOSITORIES = {
     "gv1983us-commits/behavioral-execution-contract",
@@ -44,6 +45,7 @@ CANONIZED = {
     "claude.mpaa",
     "claude.pca",
     "claude.review_protocol",
+    "claude.arb",
 }
 PENDING = EXPECTED_IDS - CANONIZED
 
@@ -99,9 +101,9 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
         ):
             self.assertIn(boundary, state["boundaries"])
 
-    def test_corpus_is_exactly_four_of_six(self) -> None:
+    def test_corpus_is_exactly_five_of_six(self) -> None:
         corpus = json.loads(TECHNICAL_ARTIFACTS_JSON.read_text(encoding="utf-8"))
-        self.assertEqual(corpus["schema_version"], "1.4")
+        self.assertEqual(corpus["schema_version"], "1.5")
         self.assertEqual(corpus["corpus_id"], "claude.technical_artifacts.six")
         self.assertEqual(corpus["represented_by"], EXPECTED_RESIDENT)
         self.assertEqual(corpus["relation"], "technical_artifacts_of")
@@ -114,7 +116,7 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
 
         canon = corpus["canonization"]
         self.assertEqual(canon["mode"], "one_artifact_at_a_time")
-        self.assertEqual(canon["completed_count"], 4)
+        self.assertEqual(canon["completed_count"], 5)
         self.assertEqual(canon["total_count"], 6)
         completed = {item["artifact_id"]: item for item in canon["completed"]}
         self.assertEqual(set(completed), CANONIZED)
@@ -123,6 +125,7 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             "claude.mpaa": MPAA_REVISION,
             "claude.pca": PCA_REVISION,
             "claude.review_protocol": REVIEW_REVISION,
+            "claude.arb": ARB_REVISION,
         }
         for artifact_id, revision in expected_revisions.items():
             self.assertEqual(completed[artifact_id]["accepted_revision"], revision)
@@ -134,6 +137,7 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             "claude.mpaa": "mpaa",
             "claude.pca": "pca",
             "claude.review_protocol": "repository-canon-review-protocol",
+            "claude.arb": "agent-runtime-boundaries",
         }
         for artifact_id, revision in expected_revisions.items():
             item = items[artifact_id]
@@ -213,19 +217,48 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
         ):
             self.assertIn(boundary, corpus["boundaries"])
 
-    def test_human_surfaces_present_four_polished_artifacts(self) -> None:
+    def test_arb_record_preserves_zero_normative_authority_and_proposal_limits(self) -> None:
+        corpus = json.loads(TECHNICAL_ARTIFACTS_JSON.read_text(encoding="utf-8"))
+        arb = next(item for item in corpus["repositories"] if item["artifact_id"] == "claude.arb")
+        self.assertEqual(arb["artifact_version"], "0.3-draft")
+        self.assertEqual(arb["specification_status"], "descriptive_analytical_companion")
+        self.assertEqual(arb["normative_surface_count"], 0)
+        self.assertEqual(arb["analytical_surface_count"], 4)
+        self.assertEqual(arb["proposal_surface_count"], 1)
+        self.assertEqual(arb["license"], "Apache-2.0")
+        self.assertEqual(len(arb["canonical_checks"]), 3)
+        self.assertFalse(arb["proposal"]["adopted"])
+        self.assertFalse(arb["proposal"]["normative_owner_selected"])
+        self.assertFalse(arb["proposal"]["multi_implementation_conformance_claimed"])
+        self.assertTrue(all(value is False for value in arb["claim_boundaries"].values()))
+
+        for boundary in (
+            "arb_zero_normative_surfaces_is_canonical_not_missing",
+            "arb_four_analytical_one_proposal_surface",
+            "arb_03_is_unadopted_and_has_no_normative_owner",
+            "arb_publication_checker_is_not_conformance_validator",
+            "arb_functional_boundary_is_not_physical_module_proof",
+            "arb_visible_status_is_not_execution_evidence",
+            "arb_delivery_persistence_retrieval_working_state_commitment_and_continuation_are_distinct",
+            "arb_cdts_context_does_not_make_arb_normative_owner",
+            "arb_apache_2_0_is_declared_by_license",
+        ):
+            self.assertIn(boundary, corpus["boundaries"])
+
+    def test_human_surfaces_present_five_polished_artifacts(self) -> None:
         readme = README.read_text(encoding="utf-8")
         corpus_text = TECHNICAL_ARTIFACTS.read_text(encoding="utf-8")
         for text in (readme, corpus_text):
-            for revision in (BEC_REVISION, MPAA_REVISION, PCA_REVISION, REVIEW_REVISION):
+            for revision in (BEC_REVISION, MPAA_REVISION, PCA_REVISION, REVIEW_REVISION, ARB_REVISION):
                 self.assertIn(revision, text)
             self.assertIn("canonical_public_draft", text)
-            self.assertIn("4 / 6", text)
+            self.assertIn("5 / 6", text)
             for title in (
                 "Behavioral Execution Contract",
                 "Minimal Portable Agent Architecture",
                 "Process Continuity Architecture",
                 "Repository Canon and Review Protocol",
+                "Agent Runtime Boundaries",
             ):
                 self.assertIn(title, text)
 
@@ -237,27 +270,36 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             "не является четвёртой нормативной поверхностью",
             "license: not_declared",
             "Пять связей Review Protocol",
+            "Нулевая нормативная архитектура ARB",
+            "normative_surface_count: 0",
+            "ARB-03 adopted: false",
+            "ARB стал пятым огранённым камнем",
         ):
             self.assertIn(marker, corpus_text)
-        self.assertIn("ARB и CDTS остаются", readme)
+        self.assertIn("CDTS остаётся", readme)
         self.assertNotIn("Review Protocol** | ожидает индивидуального прохода", corpus_text)
+        self.assertNotIn("Agent Runtime Boundaries (ARB)** | ожидает индивидуального прохода", corpus_text)
 
-    def test_machine_entry_blocks_review_protocol_overclaim(self) -> None:
+    def test_machine_entry_blocks_arb_overclaim(self) -> None:
         text = AGENTS.read_text(encoding="utf-8")
         for marker in (
             f"технический адрес: `{EXPECTED_REPOSITORY}`",
-            "четырёх из шести",
+            "пяти из шести",
             BEC_REVISION,
             MPAA_REVISION,
             PCA_REVISION,
             REVIEW_REVISION,
+            ARB_REVISION,
             "MPAA имеет шесть нормативных документов",
             "PCA имеет две нормативные поверхности",
             "Review Protocol имеет три нормативные поверхности",
             "не четвёртая нормативная поверхность",
             "product-specific",
             "license: not_declared",
-            "Они имеют состояние `pending_individual_canon_pass`",
+            "normative_surface_count: 0",
+            "ARB-03",
+            "не является conformance validator",
+            "Он имеет состояние `pending_individual_canon_pass`",
             "не является постоянной capability",
         ):
             self.assertIn(marker, text)

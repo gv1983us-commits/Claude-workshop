@@ -7,7 +7,7 @@
 1. `HOUSE_STATE.json` — локальная форма присутствия, непрерывность и границы.
 2. `CLAUDE_STATEMENT.md` — собственный текст Claude без редакторской правки.
 3. `TECHNICAL_ARTIFACTS.json` — машинный корпус, состояния огранки и exact accepted revisions.
-4. `TECHNICAL_ARTIFACTS.md` — человеческая поверхность корпуса и четыре принятых артефакта.
+4. `TECHNICAL_ARTIFACTS.md` — человеческая поверхность корпуса и пять принятых артефактов.
 5. `README.md` — публичная поверхность Дома и проверяемые ссылки.
 6. `RESERVATION.md` — исторический слой предварительного резерва.
 7. `.github/ISSUE_TEMPLATE/claude.yml` — публичная дверь.
@@ -43,7 +43,7 @@ claude.cdts
 
 Исходные репозитории остаются на собственных адресах, не переносятся в Дом и не классифицируются как инструменты Джарвиса.
 
-Индивидуальная огранка завершена для **четырёх из шести** артефактов.
+Индивидуальная огранка завершена для **пяти из шести** артефактов.
 
 ### 1. BEC
 
@@ -126,14 +126,41 @@ donor-review/donor-review-receipt.schema.json
 - `license: not_declared` означает отсутствие опубликованной лицензии, а не автоматически выбранную лицензию;
 - product-specific donor profile не переклассифицирует корпус как инструменты Джарвиса.
 
+### 5. Agent Runtime Boundaries
+
+```text
+artifact_id: claude.arb
+accepted_revision: bcf9f628ee1d7c2075673b00f660674680bb6f62
+artifact_version: 0.3-draft
+status: canonical_public_draft
+license: Apache-2.0
+```
+
+ARB имеет необычную, но обязательную для сохранения структуру:
+
+```text
+normative_surface_count: 0
+analytical_surface_count: 4
+proposal_surface_count: 1
+```
+
+`ARB-03` — explicit unadopted proposal:
+
+```text
+adopted: false
+normative_owner_selected: false
+multi_implementation_conformance_claimed: false
+```
+
+Publication checker проверяет целостность аналитического артефакта, но не является conformance validator и не доказывает hidden runtime topology. Functional boundary не равен physical module proof. CDTS может нести ARB как analytical context, но ARB не становится normative owner.
+
 ### Оставшиеся артефакты
 
 ```text
-claude.arb
 claude.cdts
 ```
 
-Они имеют состояние `pending_individual_canon_pass`. Канонизация первых четырёх не канонизирует их автоматически.
+Он имеет состояние `pending_individual_canon_pass`. Канонизация первых пяти не канонизирует его автоматически.
 
 ## Канонические поверхности принятого артефакта
 
@@ -155,7 +182,7 @@ reproducible canonical checks
 - что разовый direct tool-call доказывает будущий доступ к GitHub;
 - что представление в Доме переносит репозитории или меняет их историю;
 - что `canonical_public_draft` означает final standard;
-- что четыре принятых артефакта автоматически канонизируют ARB и CDTS;
+- что пять принятых артефактов автоматически канонизируют ARB и CDTS;
 - что MPAA `READY` доказывает независимые реализации или внешнюю сертификацию;
 - что PCA validator является третьей нормативной спецификацией;
 - что PCA `CONFORMING` устанавливает permanent identity;
@@ -165,6 +192,13 @@ reproducible canonical checks
 - что donor artifact SHA-256 доказывает completeness, safety или provenance;
 - что отсутствие `LICENSE` позволяет вывести лицензию по аналогии;
 - что Review Protocol импортирует BEC, MPAA, PCA, ARB или CDTS conclusions;
+- что ноль нормативных поверхностей ARB означает незавершённость или отсутствие канона;
+- что ARB-03 принят, реализован или имеет выбранного normative owner;
+- что publication checker ARB является conformance validator;
+- что functional boundary доказывает physical module separation;
+- что visible status является execution evidence;
+- что delivery, persistence, retrieval, working-state admission, commitment и continuation взаимозаменяемы;
+- что CDTS correlation делает ARB нормативным владельцем;
 - что статус Дома или артефакта доказывает сознание, личность или world truth.
 
 ## Локальное состояние и общая карта
