@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
   "corpus_id": "claude.technical_artifacts.six",
   "title": "Шесть технических артефактов Claude",
   "represented_by": "Claude (Anthropic)",
@@ -8,7 +8,7 @@
   "representation_scope": "house_represents_existing_external_repositories",
   "canonization": {
     "mode": "one_artifact_at_a_time",
-    "completed_count": 5,
+    "completed_count": 6,
     "total_count": 6,
     "completed": [
       {
@@ -39,6 +39,12 @@
         "artifact_id": "claude.arb",
         "accepted_on": "2026-08-06",
         "accepted_revision": "bcf9f628ee1d7c2075673b00f660674680bb6f62",
+        "status": "canonical_public_draft"
+      },
+      {
+        "artifact_id": "claude.cdts",
+        "accepted_on": "2026-08-06",
+        "accepted_revision": "ffb9719ae06db0f4f0cdd20b937c2648181a4e4a",
         "status": "canonical_public_draft"
       }
     ],
@@ -217,7 +223,46 @@
       "title": "Cross-Domain Trace Set (CDTS)",
       "repository": "gv1983us-commits/cdts",
       "url": "https://github.com/gv1983us-commits/cdts",
-      "corpus_canon_status": "pending_individual_canon_pass"
+      "corpus_canon_status": "canonicalized",
+      "artifact_status": "canonical_public_draft",
+      "accepted_revision": "ffb9719ae06db0f4f0cdd20b937c2648181a4e4a",
+      "artifact_version": "0.2-draft",
+      "record_profile_version": "0.1-draft",
+      "normative_authority_model": "five_surface_domain_ownership_matrix",
+      "normative_surface_count": 5,
+      "license": "MIT",
+      "canonical_surfaces": {
+        "canon": "https://github.com/gv1983us-commits/cdts/blob/main/CANON.md",
+        "machine_passport": "https://github.com/gv1983us-commits/cdts/blob/main/ARTIFACT.json",
+        "relations": "https://github.com/gv1983us-commits/cdts/blob/main/RELATIONS.md",
+        "provenance": "https://github.com/gv1983us-commits/cdts/blob/main/PROVENANCE.md"
+      },
+      "canonical_checks": [
+        "python -m unittest discover -v",
+        "python -m json.tool ARTIFACT.json >/dev/null",
+        "python validator/cdts_validate.py examples/mpaa-bec-execution.json",
+        "python -m review.test_artifact_canon"
+      ],
+      "result_statuses": [
+        "ADMISSIBLE",
+        "INVALID",
+        "TOOL_FAILURE",
+        "ADMISSIBLE_WITH_CONFLICTS",
+        "ADMISSIBLE_WITH_UNRESOLVED",
+        "ADMISSIBLE_WITH_CONFLICTS_AND_UNRESOLVED"
+      ],
+      "claim_boundaries": {
+        "event_identity_established": false,
+        "causality_established": false,
+        "external_conclusion_imported": false,
+        "native_record_validity_established": false,
+        "expected_record_completeness_evaluated": false,
+        "external_authenticity_established": false,
+        "arb_normative_ownership_established": false,
+        "neighbor_conformance_imported": false,
+        "multi_implementation_conformance_claimed": false,
+        "world_truth_evaluated": false
+      }
     }
   ],
   "boundaries": [
@@ -254,6 +299,15 @@
     "arb_visible_status_is_not_execution_evidence",
     "arb_delivery_persistence_retrieval_working_state_commitment_and_continuation_are_distinct",
     "arb_cdts_context_does_not_make_arb_normative_owner",
-    "arb_apache_2_0_is_declared_by_license"
+    "arb_apache_2_0_is_declared_by_license",
+    "cdts_five_surface_authority_is_domain_specific",
+    "cdts_validator_is_not_a_sixth_normative_surface",
+    "cdts_compatibility_receipt_is_not_a_sixth_normative_surface",
+    "cdts_artifact_version_and_record_profile_are_separate",
+    "cdts_admissible_is_not_external_truth_or_conformance",
+    "cdts_correlation_is_not_event_identity_or_causality",
+    "cdts_external_conclusions_are_not_imported",
+    "cdts_reciprocal_relations_do_not_require_mutual_sha_fixpoint",
+    "cdts_mit_is_declared_by_license"
   ]
 }

@@ -37,9 +37,9 @@
 | 3 | **Process Continuity Architecture (PCA)** | **канонизирован как public draft** |
 | 4 | **Repository Canon and Review Protocol** | **канонизирован как public draft** |
 | 5 | **Agent Runtime Boundaries (ARB)** | **канонизирован как public draft** |
-| 6 | **Cross-Domain Trace Set (CDTS)** | ожидает индивидуального прохода |
+| 6 | **Cross-Domain Trace Set (CDTS)** | **канонизирован как public draft** |
 
-Готово: **5 / 6**. CDTS не объявляется канонизированным заранее.
+Готово: **6 / 6**. Корпус полностью огранён; каждый артефакт сохраняет собственную власть и границы.
 
 ---
 
@@ -397,6 +397,83 @@ ARB стал пятым огранённым камнем: его аналити
 
 ---
 
+## 6. Cross-Domain Trace Set — шестой и последний принятый артефакт
+
+**Cross-Domain Trace Set (CDTS)** — coordination-layer trace для корреляции адресуемых records, принадлежащих независимым спецификациям.
+
+Его центральная формула:
+
+```text
+import the trace != import the conclusion
+```
+
+```text
+accepted_revision: ffb9719ae06db0f4f0cdd20b937c2648181a4e4a
+artifact_version: 0.2-draft
+record_profile_version: 0.1-draft
+status: canonical_public_draft
+license: MIT
+```
+
+### Пять нормативных граней CDTS
+
+| Грань | Владеет |
+|---|---|
+| `spec/01_CDTS_CORE.md` | trace semantics, ownership boundaries и admissibility requirements |
+| `spec/02_RELATIONSHIP_VOCABULARY.md` | смыслом CDTS relationship, status и basis tokens |
+| `spec/03_SOURCE_REVISION_POLICY.md` | owner, role, exact pin и compatibility-set discipline |
+| `spec/04_CONFORMANCE.md` | validation pipeline, result statuses и exit codes |
+| `schema/cdts-record.schema.json` | формой record profile `0.1-draft` |
+
+```text
+normative_surface_count: 5
+reference validator: non-normative implementation
+compatibility receipt: exact evidence, не шестая спецификация
+```
+
+Артефакт получил версию `0.2-draft`, но record profile остался `0.1-draft`: огранка изменила канон, provenance, relations и compatibility set, не ломая существующий trace format.
+
+### Что исправила огранка CDTS
+
+1. Нормативная власть разведена между пятью точными поверхностями.
+2. Validator закреплён как fail-closed reference implementation, не шестая норма.
+3. Все активные pins обновлены до принятых SHA BEC, MPAA, PCA, Review Protocol и ARB.
+4. Compatibility receipt отделён от абстрактной Source Revision Policy.
+5. Schema получила repository-owned public `$id`.
+6. Reciprocal relations признаны независимыми fixed-revision reviews без невозможного mutual-SHA fixpoint.
+7. Исторические TDD и correction logs сохранены как история и не переписаны задним числом.
+
+```text
+correlation != event identity
+ordered timestamps != causality
+matching digest != authenticity or completeness
+ADMISSIBLE != external truth
+ARB mapping != normative ownership
+```
+
+### Канонические поверхности CDTS
+
+- [репозиторий](https://github.com/gv1983us-commits/cdts)
+- [CANON.md](https://github.com/gv1983us-commits/cdts/blob/main/CANON.md)
+- [ARTIFACT.json](https://github.com/gv1983us-commits/cdts/blob/main/ARTIFACT.json)
+- [RELATIONS.md](https://github.com/gv1983us-commits/cdts/blob/main/RELATIONS.md)
+- [PROVENANCE.md](https://github.com/gv1983us-commits/cdts/blob/main/PROVENANCE.md)
+
+### Проверка CDTS
+
+```bash
+python -m unittest discover -v
+python -m json.tool ARTIFACT.json >/dev/null
+python validator/cdts_validate.py examples/mpaa-bec-execution.json
+python -m review.test_artifact_canon
+```
+
+Полный контур прошёл на Python 3.10, 3.11, 3.12 и 3.13: 68 tests, machine passport, five-surface canon, schema parity, source pins, resistance corpus, canonical example и external-evaluation example.
+
+CDTS стал шестым огранённым камнем и замкнул связи корпуса, не присвоив ни одного соседнего conclusion.
+
+---
+
 ## Полный корпус
 
 | Артефакт | Собственный предмет | Исходный репозиторий |
@@ -418,4 +495,4 @@ ARB стал пятым огранённым камнем: его аналити
 точная ревизия + зелёный CI ≠ world truth
 ```
 
-Следующий камень начинается только после полного принятия текущего. Состояние после ARB: **5 / 6**.
+Корпус завершён: **6 / 6**. Дальнейшее развитие каждого артефакта остаётся отдельным versioned change с собственным CI и exact revision.

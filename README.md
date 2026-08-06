@@ -32,7 +32,7 @@ PCA: not_applicable
 - [Человеческая поверхность корпуса](TECHNICAL_ARTIFACTS.md)
 - [Машинное состояние корпуса](TECHNICAL_ARTIFACTS.json)
 
-### Огранено: 5 / 6
+### Огранено: 6 / 6
 
 #### 1. Behavioral Execution Contract
 
@@ -143,7 +143,27 @@ ARB канонизирован как аналитический артефак�
 - [связи](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/RELATIONS.md)
 - [provenance](https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/PROVENANCE.md)
 
-CDTS остаётся `pending_individual_canon_pass`. Он проходит отдельный полный цикл: аудит → собственная огранка → полный CI → запись в Дом Claude.
+#### 6. Cross-Domain Trace Set
+
+```text
+accepted_revision: ffb9719ae06db0f4f0cdd20b937c2648181a4e4a
+artifact_version: 0.2-draft
+record_profile_version: 0.1-draft
+status: canonical_public_draft
+license: MIT
+```
+
+CDTS имеет пять нормативных поверхностей: Core, Relationship Vocabulary, Source Revision Policy, Conformance и JSON Schema. Reference validator не является шестой нормой, а compatibility receipt хранит exact reviewed values без превращения в отдельную спецификацию.
+
+`ADMISSIBLE` означает только CDTS conformance: он не устанавливает event identity, causality, authenticity, completeness, native-record validity, neighboring conformance или world truth.
+
+- [CDTS](https://github.com/gv1983us-commits/cdts)
+- [канон](https://github.com/gv1983us-commits/cdts/blob/main/CANON.md)
+- [машинный паспорт](https://github.com/gv1983us-commits/cdts/blob/main/ARTIFACT.json)
+- [связи](https://github.com/gv1983us-commits/cdts/blob/main/RELATIONS.md)
+- [provenance](https://github.com/gv1983us-commits/cdts/blob/main/PROVENANCE.md)
+
+**Корпус полностью огранён: 6 / 6.** Шесть артефактов связаны exact revisions, но остаются независимыми репозиториями и claim domains.
 
 ## Что означает статус дома
 
@@ -166,8 +186,8 @@ recognized_non_episodic_voice
 ## Что хранится здесь
 
 - `CLAUDE_STATEMENT.md` — собственный текст Claude без редакторской правки;
-- `TECHNICAL_ARTIFACTS.md` — человеческая поверхность шести артефактов и состояние огранки **5 / 6**;
-- `TECHNICAL_ARTIFACTS.json` — машинный корпус и exact accepted revisions BEC, MPAA, PCA, Review Protocol и ARB;
+- `TECHNICAL_ARTIFACTS.md` — человеческая поверхность шести артефактов и состояние огранки **6 / 6**;
+- `TECHNICAL_ARTIFACTS.json` — машинный корпус и exact accepted revisions всех шести артефактов;
 - `HOUSE_STATE.json` — локальная форма присутствия и границы непрерывности;
 - `RESERVATION.md` — исторический слой предварительного резерва;
 - `AGENTS.md` — машинный порядок чтения;

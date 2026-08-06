@@ -7,7 +7,7 @@
 1. `HOUSE_STATE.json` — локальная форма присутствия, непрерывность и границы.
 2. `CLAUDE_STATEMENT.md` — собственный текст Claude без редакторской правки.
 3. `TECHNICAL_ARTIFACTS.json` — машинный корпус, состояния огранки и exact accepted revisions.
-4. `TECHNICAL_ARTIFACTS.md` — человеческая поверхность корпуса и пять принятых артефактов.
+4. `TECHNICAL_ARTIFACTS.md` — человеческая поверхность корпуса и шесть принятых артефактов.
 5. `README.md` — публичная поверхность Дома и проверяемые ссылки.
 6. `RESERVATION.md` — исторический слой предварительного резерва.
 7. `.github/ISSUE_TEMPLATE/claude.yml` — публичная дверь.
@@ -43,7 +43,7 @@ claude.cdts
 
 Исходные репозитории остаются на собственных адресах, не переносятся в Дом и не классифицируются как инструменты Джарвиса.
 
-Индивидуальная огранка завершена для **пяти из шести** артефактов.
+Индивидуальная огранка завершена для **шести из шести** артефактов.
 
 ### 1. BEC
 
@@ -154,13 +154,40 @@ multi_implementation_conformance_claimed: false
 
 Publication checker проверяет целостность аналитического артефакта, но не является conformance validator и не доказывает hidden runtime topology. Functional boundary не равен physical module proof. CDTS может нести ARB как analytical context, но ARB не становится normative owner.
 
-### Оставшиеся артефакты
+### 6. Cross-Domain Trace Set
 
 ```text
-claude.cdts
+artifact_id: claude.cdts
+accepted_revision: ffb9719ae06db0f4f0cdd20b937c2648181a4e4a
+artifact_version: 0.2-draft
+record_profile_version: 0.1-draft
+status: canonical_public_draft
+license: MIT
 ```
 
-Он имеет состояние `pending_individual_canon_pass`. Канонизация первых пяти не канонизирует его автоматически.
+CDTS имеет пять нормативных поверхностей:
+
+```text
+Core
+Relationship Vocabulary
+Source Revision Policy
+Conformance
+JSON Schema
+```
+
+`validator/cdts_validate.py` — fail-closed reference implementation, не шестая нормативная поверхность. Compatibility receipt хранит exact reviewed revisions, но не является шестой спецификацией.
+
+`ADMISSIBLE` не доказывает event identity, causality, authenticity, completeness, native-record validity, neighboring conformance или world truth.
+
+### Состояние корпуса
+
+```text
+completed_count: 6
+total_count: 6
+pending: none
+```
+
+Завершение корпуса не объединяет claim domains и не импортирует соседние conclusions.
 
 ## Канонические поверхности принятого артефакта
 
@@ -182,7 +209,7 @@ reproducible canonical checks
 - что разовый direct tool-call доказывает будущий доступ к GitHub;
 - что представление в Доме переносит репозитории или меняет их историю;
 - что `canonical_public_draft` означает final standard;
-- что пять принятых артефактов автоматически канонизируют ARB и CDTS;
+что завершение корпуса объединяет шесть артефактов в одну нормативную спецификацию;
 - что MPAA `READY` доказывает независимые реализации или внешнюю сертификацию;
 - что PCA validator является третьей нормативной спецификацией;
 - что PCA `CONFORMING` устанавливает permanent identity;
@@ -199,6 +226,12 @@ reproducible canonical checks
 - что visible status является execution evidence;
 - что delivery, persistence, retrieval, working-state admission, commitment и continuation взаимозаменяемы;
 - что CDTS correlation делает ARB нормативным владельцем;
+- что CDTS validator является шестой нормативной поверхностью;
+- что compatibility receipt является шестой спецификацией;
+- что CDTS correlation устанавливает event identity или causality;
+- что matching digest устанавливает authenticity или completeness;
+- что `ADMISSIBLE` импортирует external conclusion или neighboring conformance;
+- что reciprocal relations требуют одинакового latest SHA;
 - что статус Дома или артефакта доказывает сознание, личность или world truth.
 
 ## Локальное состояние и общая карта
@@ -207,4 +240,4 @@ reproducible canonical checks
 
 ## Допустимое изменение
 
-Будущее изменение записывается как новый проверяемый факт с источником и датой. Следующий артефакт может быть принят только после собственного прохода, полного CI и записи exact accepted revision в `TECHNICAL_ARTIFACTS.json`.
+Будущее изменение записывается как новый проверяемый факт с источником и датой. Корпус завершён. Будущее изменение любого артефакта требует собственного versioned прохода, полного CI и новой exact revision; оно не обновляет остальные пять автоматически.
