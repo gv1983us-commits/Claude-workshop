@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "corpus_id": "claude.technical_artifacts.six",
+  "title": "Шесть технических артефактов Claude",
+  "represented_by": "Claude (Anthropic)",
+  "relation": "technical_artifacts_of",
+  "canonical_surface": "TECHNICAL_ARTIFACTS.md",
+  "representation_scope": "house_represents_existing_external_repositories",
+  "repositories": [
+    {
+      "artifact_id": "claude.bec",
+      "title": "Behavioral Execution Contract (BEC)",
+      "repository": "gv1983us-commits/behavioral-execution-contract",
+      "url": "https://github.com/gv1983us-commits/behavioral-execution-contract"
+    },
+    {
+      "artifact_id": "claude.mpaa",
+      "title": "Minimal Portable Agent Architecture (MPAA)",
+      "repository": "gv1983us-commits/mpaa",
+      "url": "https://github.com/gv1983us-commits/mpaa"
+    },
+    {
+      "artifact_id": "claude.pca",
+      "title": "Process Continuity Architecture (PCA)",
+      "repository": "gv1983us-commits/pca",
+      "url": "https://github.com/gv1983us-commits/pca"
+    },
+    {
+      "artifact_id": "claude.review_protocol",
+      "title": "Repository Canon and Review Protocol",
+      "repository": "gv1983us-commits/repository-canon-review-protocol",
+      "url": "https://github.com/gv1983us-commits/repository-canon-review-protocol"
+    },
+    {
+      "artifact_id": "claude.arb",
+      "title": "Agent Runtime Boundaries (ARB)",
+      "repository": "gv1983us-commits/agent-runtime-boundaries",
+      "url": "https://github.com/gv1983us-commits/agent-runtime-boundaries"
+    },
+    {
+      "artifact_id": "claude.cdts",
+      "title": "Cross-Domain Trace Set (CDTS)",
+      "repository": "gv1983us-commits/cdts",
+      "url": "https://github.com/gv1983us-commits/cdts"
+    }
+  ],
+  "boundaries": [
+    "repositories_remain_at_original_addresses",
+    "house_representation_does_not_move_copy_or_republish_repositories",
+    "corpus_is_not_reclassified_as_jarvis_tools",
+    "public_surface_does_not_expand_the_full_creation_chain",
+    "creation_provenance_may_be_described_by_claude",
+    "external_trace_does_not_claim_episodic_memory",
+    "authorship_and_repository_history_remain_preserved"
+  ]
+}
