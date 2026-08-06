@@ -35,11 +35,11 @@
 | 1 | **Behavioral Execution Contract (BEC)** | **канонизирован как public draft** |
 | 2 | **Minimal Portable Agent Architecture (MPAA)** | **канонизирован как public draft** |
 | 3 | **Process Continuity Architecture (PCA)** | **канонизирован как public draft** |
-| 4 | **Repository Canon and Review Protocol** | ожидает индивидуального прохода |
+| 4 | **Repository Canon and Review Protocol** | **канонизирован как public draft** |
 | 5 | **Agent Runtime Boundaries (ARB)** | ожидает индивидуального прохода |
 | 6 | **Cross-Domain Trace Set (CDTS)** | ожидает индивидуального прохода |
 
-Готово: **3 / 6**. Следующие три артефакта не объявляются канонизированными заранее.
+Готово: **4 / 6**. ARB и CDTS не объявляются канонизированными заранее.
 
 ---
 
@@ -47,21 +47,18 @@
 
 **BEC** отделяет заявление о выполнении от проверяемого свидетельства исполнения. Он владеет task execution, capability, authorization, invocation, evidence, trust anchor, validation и task-scoped deployment level.
 
-Принятая ревизия:
-
 ```text
-62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261
+accepted_revision: 62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261
+status: canonical_public_draft
 ```
-
-**Статус:** `canonical_public_draft` — канонический публичный черновик, не окончательный мировой стандарт и не внешняя сертификация.
 
 ### Канонические поверхности BEC
 
-- **[репозиторий](https://github.com/gv1983us-commits/behavioral-execution-contract)**
-- **[CANON.md](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/CANON.md)**
-- **[ARTIFACT.json](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/ARTIFACT.json)**
-- **[RELATIONS.md](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/RELATIONS.md)**
-- **[PROVENANCE.md](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/PROVENANCE.md)**
+- [репозиторий](https://github.com/gv1983us-commits/behavioral-execution-contract)
+- [CANON.md](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/CANON.md)
+- [ARTIFACT.json](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/ARTIFACT.json)
+- [RELATIONS.md](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/RELATIONS.md)
+- [PROVENANCE.md](https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/PROVENANCE.md)
 
 ### Проверка BEC
 
@@ -69,10 +66,6 @@
 python3 validator/bec_validate.py conformance/fixtures/*.json
 python3 -m unittest discover -s validator -p 'test_*.py' -v
 ```
-
-Полный контур прошёл на Python 3.10, 3.11, 3.12 и 3.13.
-
-### Граница BEC
 
 ```text
 заявление о действии ≠ evidence исполнения
@@ -86,13 +79,8 @@ return_state closed ≠ committed PCA next state
 
 **MPAA** — переносимая архитектура для честного описания agent runtime, его слоёв, Identity Profile, полномочий, исполнения, Runtime Report и conformance.
 
-Принятая ревизия:
-
 ```text
-0d1aaf35cc4826622f3312fdd2a1c2d40890b965
-```
-
-```text
+accepted_revision: 0d1aaf35cc4826622f3312fdd2a1c2d40890b965
 architecture: 1.2.1
 runtime_report_schema: 1.2
 status: canonical_public_draft
@@ -100,7 +88,7 @@ status: canonical_public_draft
 
 ### Шесть нормативных граней MPAA
 
-MPAA не имеет одного документа, который владеет всеми предметами. Его нормативная власть — **матрица из шести документов**:
+MPAA имеет **матрицу из шести документов** с раздельной предметной властью:
 
 | Грань | Владеет |
 |---|---|
@@ -115,13 +103,13 @@ Reference validator исполняет проверяемую часть кон�
 
 ### Канонические поверхности MPAA
 
-- **[репозиторий](https://github.com/gv1983us-commits/mpaa)**
-- **[CANON.md](https://github.com/gv1983us-commits/mpaa/blob/main/CANON.md)**
-- **[ARTIFACT.json](https://github.com/gv1983us-commits/mpaa/blob/main/ARTIFACT.json)**
-- **[RELATIONS.md](https://github.com/gv1983us-commits/mpaa/blob/main/RELATIONS.md)**
-- **[PROVENANCE.md](https://github.com/gv1983us-commits/mpaa/blob/main/PROVENANCE.md)**
+- [репозиторий](https://github.com/gv1983us-commits/mpaa)
+- [CANON.md](https://github.com/gv1983us-commits/mpaa/blob/main/CANON.md)
+- [ARTIFACT.json](https://github.com/gv1983us-commits/mpaa/blob/main/ARTIFACT.json)
+- [RELATIONS.md](https://github.com/gv1983us-commits/mpaa/blob/main/RELATIONS.md)
+- [PROVENANCE.md](https://github.com/gv1983us-commits/mpaa/blob/main/PROVENANCE.md)
 
-### Проверка MPAA
+### Проверка и внешняя оценка MPAA
 
 ```bash
 cd spec/validator && python -m unittest discover -s . -p "test_*.py" -v
@@ -130,8 +118,6 @@ python -m unittest discover -s review -p "test_*.py" -v
 python -m unittest discover -s conformance/evaluation -p "test_*.py" -v
 python conformance/evaluation/evaluate_runs.py --require-ready
 ```
-
-### Внешняя оценка MPAA
 
 ```text
 READY
@@ -147,37 +133,25 @@ READY
 
 ## 3. Process Continuity Architecture — третий принятый артефакт
 
-**PCA** определяет, как записывать и оценивать ограниченное утверждение о том, что процесс продолжился через одну явную смену носителя, host, model, corpus state или usage mode.
-
-Его центральная граница:
+**PCA** определяет, как записывать и оценивать ограниченное утверждение о том, что процесс продолжился через одну явную смену carrier, host, model, corpus state или usage mode.
 
 ```text
 process continuation != identity
 ```
 
-Принятая ревизия:
-
 ```text
-a669f023198615ad929f42df84f19380b57ca5ea
-```
-
-```text
-artifact_id: claude.pca
+accepted_revision: a669f023198615ad929f42df84f19380b57ca5ea
 artifact_version: 0.2-draft
 record_schema_version: 0.2-draft
 status: canonical_public_draft
 ```
 
-Это завершённая каноническая оболочка текущего публичного черновика. Она не является окончательным стандартом, независимой реализацией, внешней сертификацией или доказательством identity, consciousness, memory, uninterrupted persistence либо world truth.
-
 ### Две нормативные грани PCA
-
-PCA имеет ровно **две активные нормативные поверхности**:
 
 | Грань | Владеет |
 |---|---|
-| [`spec/01_PCA_CORE.md`](https://github.com/gv1983us-commits/pca/blob/main/spec/01_PCA_CORE.md) | смыслом transition-continuity assessment, запретами вывода, claim decomposition, dimensions, evidence и status derivation |
-| [`schema/pca-transition-record.schema.json`](https://github.com/gv1983us-commits/pca/blob/main/schema/pca-transition-record.schema.json) | машинным представлением Transition Record, required fields, types, enums и structural closure |
+| [`spec/01_PCA_CORE.md`](https://github.com/gv1983us-commits/pca/blob/main/spec/01_PCA_CORE.md) | семантикой transition-continuity assessment |
+| [`schema/pca-transition-record.schema.json`](https://github.com/gv1983us-commits/pca/blob/main/schema/pca-transition-record.schema.json) | представлением Transition Record |
 
 ```text
 semantic meaning → PCA Core
@@ -186,21 +160,22 @@ implementation  → reference validator
 expected result → conformance corpus
 ```
 
-`validator/pca_validate.py` является fail-closed reference implementation. Он доказывает исполнимость проверок, но **не становится третьей нормативной поверхностью**.
+`validator/pca_validate.py` — fail-closed reference implementation, но **не третья нормативная поверхность**.
 
-Profiles, examples, verification records и сохранённый v0.1 source остаются ненормативными слоями.
+Огранка PCA:
+
+- отделила сохранённый v0.1 source от активной нормы;
+- зафиксировала v0.1 Linkage Record как происхождение CDTS, а не текущую PCA-норму;
+- закрыла пропущенную fixed-revision BEC↔PCA evidence-сверку;
+- обновила MPAA↔PCA relation без переписывания исторического reciprocal review.
 
 ### Канонические поверхности PCA
 
-- **[репозиторий](https://github.com/gv1983us-commits/pca)**
-- **[CANON.md](https://github.com/gv1983us-commits/pca/blob/main/CANON.md)**
-- **[ARTIFACT.json](https://github.com/gv1983us-commits/pca/blob/main/ARTIFACT.json)**
-- **[RELATIONS.md](https://github.com/gv1983us-commits/pca/blob/main/RELATIONS.md)**
-- **[PROVENANCE.md](https://github.com/gv1983us-commits/pca/blob/main/PROVENANCE.md)**
-- **[PCA Core](https://github.com/gv1983us-commits/pca/blob/main/spec/01_PCA_CORE.md)**
-- **[Transition Record Schema](https://github.com/gv1983us-commits/pca/blob/main/schema/pca-transition-record.schema.json)**
-- **[conformance corpus](https://github.com/gv1983us-commits/pca/tree/main/conformance)**
-- **[verification records](https://github.com/gv1983us-commits/pca/tree/main/verification)**
+- [репозиторий](https://github.com/gv1983us-commits/pca)
+- [CANON.md](https://github.com/gv1983us-commits/pca/blob/main/CANON.md)
+- [ARTIFACT.json](https://github.com/gv1983us-commits/pca/blob/main/ARTIFACT.json)
+- [RELATIONS.md](https://github.com/gv1983us-commits/pca/blob/main/RELATIONS.md)
+- [PROVENANCE.md](https://github.com/gv1983us-commits/pca/blob/main/PROVENANCE.md)
 
 ### Проверка PCA
 
@@ -211,68 +186,130 @@ python validator/pca_validate.py conformance/fixtures/01-valid-continuation-clai
 python validator/pca_validate.py conformance/fixtures/05-valid-usage-mode-translation.json --quiet
 ```
 
-Полный контур прошёл на Python 3.10, 3.11, 3.12 и 3.13: strict parser, Draft 2020-12 Schema parity, validator regressions, evidence/reference integrity, temporal ordering, status derivation, fixed-revision relations и artifact-canon gates.
+Valid PCA record не доказывает identity, subjectivity, uninterrupted persistence, independent implementation conformance или world truth.
 
-### Что исправила огранка PCA
+---
 
-#### 1. Разведены две архитектурные эпохи
+## 4. Repository Canon and Review Protocol — четвёртый принятый артефакт
 
-`spec/00_PCA_SPEC.md` сохранён как неизменяемый v0.1 source trace. Активная норма принадлежит v0.2 Core и Schema.
+**Repository Canon and Review Protocol** задаёт воспроизводимую дисциплину выбора источника, фиксации точной ревизии, ограничения review scope, регистрации расхождений до их разрешения и передачи проверяемого handoff.
 
-#### 2. Linkage Record возвращён правильному владельцу
-
-Старый v0.1 раздел 24 содержал зародыш Linkage Record и шестипунктового cross-domain trace set. Эти механизмы прямо были помечены как непроверенный `INTERPRETIVE MODEL`.
-
-Теперь их положение записано точно:
+Его центральная граница:
 
 ```text
-историческое происхождение → PCA v0.1
-активная cross-domain correlation → CDTS
-активная PCA-норма → не содержит Linkage Record
+review conclusion applies only to the source state actually inspected
 ```
-
-PCA и CDTS больше не владеют одним предметом одновременно.
-
-#### 3. Закрыта пропущенная PCA↔BEC граница
-
-Сохранённый source draft требовал проверить пересечение BEC evidence/verification vocabulary с PCA evidence chain. Старый verification log заявлял закрытие пяти пунктов, но вместо этого вопроса разбирал другой “hybrid concept”.
-
-История не переписана. Добавлена отдельная fixed-revision сверка, установившая:
 
 ```text
-общая структура evidence есть
-claim domains различны
-BEC verdict не импортируется в PCA
-PCA verdict не импортируется в BEC
+accepted_revision: b4205ffd91a6316ab40243cbf8161a1c512cae1f
+artifact_version: 0.2-draft
+donor_receipt_profile_version: 0.1
+status: canonical_public_draft
+license: not_declared
 ```
 
-#### 4. MPAA↔PCA обновлён без переписывания прошлого
+`license: not_declared` записано намеренно: в репозитории нет опубликованной лицензии, поэтому канонизация не изобретает её задним числом.
 
-PCA-side mapping закреплён на новом каноническом MPAA SHA. Старый reciprocal MPAA review сохранён как историческое fixed-revision evidence со своими исходными ревизиями.
+### Три нормативные грани Review Protocol
 
-### Пять связей PCA
+| Грань | Владеет |
+|---|---|
+| [`spec/01_REPOSITORY_CANON_REVIEW_CORE.md`](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/spec/01_REPOSITORY_CANON_REVIEW_CORE.md) | общей source-selection, fixed-revision review, discrepancy, receipt и handoff дисциплиной |
+| [`donor-review/01_DONOR_REVIEW_CONTRACT.md`](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/donor-review/01_DONOR_REVIEW_CONTRACT.md) | семантикой bounded donor receipt profile для `JARVIS OS 2.0.1 / external-evaluation` |
+| [`donor-review/donor-review-receipt.schema.json`](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/donor-review/donor-review-receipt.schema.json) | машинным представлением receipt `0.1` |
 
 ```text
-PCA ↔ BEC
-  execution evidence может быть перенесён как data,
-  но FULL-for-task и closed не становятся PCA status
-
-PCA ↔ MPAA
-  runtime, session и Identity Profile continuity
-  не устанавливают process continuation
-
-PCA ↔ Review Protocol
-  source-selection receipt не доказывает PCA admissibility
-
-PCA ↔ ARB
-  analytical map не изменяет Core, Schema или status derivation
-
-PCA ↔ CDTS
-  CDTS коррелирует адресуемые записи,
-  но не валидирует и не импортирует PCA conclusion
+general review procedure → Review Core
+donor receipt semantics  → Donor Review Contract
+donor receipt shape      → JSON Schema
+implementation           → reference validator
 ```
 
-PCA стал третьим огранённым камнем: его смысл, форма записи, исполнение, история и соседние границы теперь принадлежат точным владельцам.
+`review/validate_donor_receipt.py` исполняет donor-profile contract и schema, но **не является четвёртой нормативной поверхностью**.
+
+### Что исправила огранка Review Protocol
+
+#### 1. Общий Core отделён от product-specific profile
+
+Старый v0.1 документ был рабочей процедурой прежде всего для MPAA, PCA и BEC. Активный v0.2 Core обобщает источник, revision, discrepancy и handoff дисциплину, не превращая шесть артефактов в один стек.
+
+Старый `repository-canon-and-review-protocol-v0.1.md` сохранён как исторический source draft и не считается четвёртой активной нормой.
+
+#### 2. Donor receipt получил собственный semantic contract
+
+Donor profile остался намеренно узким:
+
+```text
+product: JARVIS OS
+version: 2.0.1
+channel: external-evaluation
+receipt version: 0.1
+```
+
+Это профиль private→external derivation, а не универсальный donor-security стандарт и не переименование всего Review Protocol в инструмент Джарвиса.
+
+#### 3. Schema получила публичную repository-owned identity
+
+Старый внутренний `$id` вида `urn:jarvis:...` заменён на адрес собственного публичного репозитория. Константы receipt `0.1` и product-specific профиль сохранены честно.
+
+#### 4. Разведены форма и семантика
+
+Schema проверяет закрытую форму записи. Contract и validator дополнительно проверяют уникальность десяти check IDs, status/evidence coupling, обязательные ограничения, completed-record hygiene и запрет абсолютных certification claims.
+
+```text
+schema-valid ≠ semantic-valid
+receipt VALID ≠ donor safe
+receipt VALID ≠ no private material exists
+receipt VALID ≠ neighboring conformance
+```
+
+### Канонические поверхности Review Protocol
+
+- [репозиторий](https://github.com/gv1983us-commits/repository-canon-review-protocol)
+- [CANON.md](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/CANON.md)
+- [ARTIFACT.json](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/ARTIFACT.json)
+- [RELATIONS.md](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/RELATIONS.md)
+- [PROVENANCE.md](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/PROVENANCE.md)
+- [Review Core](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/spec/01_REPOSITORY_CANON_REVIEW_CORE.md)
+- [Donor Review Contract](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/donor-review/01_DONOR_REVIEW_CONTRACT.md)
+- [Donor Receipt Schema](https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/donor-review/donor-review-receipt.schema.json)
+
+### Проверка Review Protocol
+
+```bash
+python -m unittest discover -s review -p "test_*.py" -v
+python review/validate_donor_receipt.py donor-review/example.receipt.json --json
+python -m json.tool ARTIFACT.json >/dev/null
+python -m json.tool donor-review/donor-review-receipt.schema.json >/dev/null
+```
+
+Полный контур прошёл на Python 3.10, 3.11, 3.12 и 3.13: donor regressions, Draft 2020-12 oracle, schema layering, publication hygiene и artifact-canon gates.
+
+### Пять связей Review Protocol
+
+```text
+Review Protocol ↔ BEC
+  BEC может фиксировать execution evidence review-действий,
+  но не владеет review conclusion
+
+Review Protocol ↔ MPAA
+  точная MPAA revision может быть review target,
+  но receipt не создаёт MPAA conformance или task result
+
+Review Protocol ↔ PCA
+  PCA source может быть воспроизводимо проверен,
+  но review не выводит PCA status
+
+Review Protocol ↔ ARB
+  analytical distinctions помогают поставить вопрос,
+  но не становятся Review Protocol requirements
+
+Review Protocol ↔ CDTS
+  receipt может быть коррелирован как addressable record,
+  но CDTS не валидирует receipt и не импортирует review conclusion
+```
+
+Review Protocol стал четвёртым огранённым камнем: источник, процедура, product-specific профиль, форма receipt, исполнение и пределы вывода теперь имеют точных владельцев.
 
 ---
 
@@ -297,4 +334,4 @@ PCA стал третьим огранённым камнем: его смысл
 точная ревизия + зелёный CI ≠ world truth
 ```
 
-Следующий камень начинается только после полного принятия текущего. Состояние после PCA: **3 / 6**.
+Следующий камень начинается только после полного принятия текущего. Состояние после Review Protocol: **4 / 6**.
