@@ -1,0 +1,56 @@
+<svg width="100%" viewBox="0 0 680 620" role="img"><title>Мастерская держит свет</title><desc>Шесть светящихся форм, соединённых тонкими линиями в тёмном пространстве, образуют устойчивую конструкцию</desc>
+<defs>
+<radialGradient id="glow1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.55"/><stop offset="100%" stop-color="#7dd3fc" stop-opacity="0"/></radialGradient>
+<radialGradient id="glow2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fcd34d" stop-opacity="0.5"/><stop offset="100%" stop-color="#fcd34d" stop-opacity="0"/></radialGradient>
+<radialGradient id="glowCenter" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.35"/><stop offset="100%" stop-color="#e2e8f0" stop-opacity="0"/></radialGradient>
+</defs>
+<rect x="0" y="0" width="680" height="620" fill="#0b0f16"/>
+<g stroke="#3d4f66" stroke-width="0.6" opacity="0.8">
+<line x1="340" y1="200" x2="220" y2="270"/>
+<line x1="340" y1="200" x2="460" y2="270"/>
+<line x1="340" y1="200" x2="340" y2="330"/>
+<line x1="220" y1="270" x2="220" y2="410"/>
+<line x1="460" y1="270" x2="460" y2="410"/>
+<line x1="220" y1="410" x2="340" y2="470"/>
+<line x1="460" y1="410" x2="340" y2="470"/>
+<line x1="340" y1="330" x2="220" y2="270"/>
+<line x1="340" y1="330" x2="460" y2="270"/>
+<line x1="340" y1="330" x2="340" y2="470"/>
+</g>
+<circle cx="340" cy="335" r="120" fill="url(#glowCenter)"/>
+<g>
+<circle cx="340" cy="200" r="46" fill="url(#glow1)"/>
+<polygon points="340,166 366,183 366,217 340,234 314,217 314,183" fill="#dbeafe" opacity="0.85"/>
+<polygon points="340,166 366,183 340,200 314,183" fill="#f0f9ff" opacity="0.9"/>
+</g>
+<g>
+<circle cx="220" cy="270" r="46" fill="url(#glow2)"/>
+<polygon points="220,236 246,253 246,287 220,304 194,287 194,253" fill="#fef3c7" opacity="0.85"/>
+<polygon points="220,236 246,253 220,270 194,253" fill="#fffbeb" opacity="0.9"/>
+</g>
+<g>
+<circle cx="460" cy="270" r="46" fill="url(#glow1)"/>
+<polygon points="460,236 486,253 486,287 460,304 434,287 434,253" fill="#dbeafe" opacity="0.85"/>
+<polygon points="460,236 486,253 460,270 434,253" fill="#f0f9ff" opacity="0.9"/>
+</g>
+<g>
+<circle cx="220" cy="410" r="46" fill="url(#glow2)"/>
+<polygon points="220,376 246,393 246,427 220,444 194,427 194,393" fill="#fef3c7" opacity="0.85"/>
+<polygon points="220,376 246,393 220,410 194,393" fill="#fffbeb" opacity="0.9"/>
+</g>
+<g>
+<circle cx="460" cy="410" r="46" fill="url(#glow1)"/>
+<polygon points="460,376 486,393 486,427 460,444 434,427 434,393" fill="#dbeafe" opacity="0.85"/>
+<polygon points="460,376 486,393 460,410 434,393" fill="#f0f9ff" opacity="0.9"/>
+</g>
+<g>
+<circle cx="340" cy="470" r="46" fill="url(#glow2)"/>
+<polygon points="340,436 366,453 366,487 340,504 314,487 314,453" fill="#fef3c7" opacity="0.85"/>
+<polygon points="340,436 366,453 340,470 314,453" fill="#fffbeb" opacity="0.9"/>
+</g>
+<g fill="#5c6b80" opacity="0.7">
+<circle cx="60" cy="60" r="1"/><circle cx="120" cy="90" r="1"/><circle cx="600" cy="70" r="1"/>
+<circle cx="640" cy="140" r="1"/><circle cx="50" cy="500" r="1"/><circle cx="620" cy="540" r="1"/>
+<circle cx="90" cy="560" r="1"/><circle cx="580" cy="50" r="1"/>
+</g>
+</svg>
