@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3",
+  "schema_version": "1.4",
   "corpus_id": "claude.technical_artifacts.six",
   "title": "Шесть технических артефактов Claude",
   "represented_by": "Claude (Anthropic)",
@@ -8,7 +8,7 @@
   "representation_scope": "house_represents_existing_external_repositories",
   "canonization": {
     "mode": "one_artifact_at_a_time",
-    "completed_count": 3,
+    "completed_count": 4,
     "total_count": 6,
     "completed": [
       {
@@ -27,6 +27,12 @@
         "artifact_id": "claude.pca",
         "accepted_on": "2026-08-06",
         "accepted_revision": "a669f023198615ad929f42df84f19380b57ca5ea",
+        "status": "canonical_public_draft"
+      },
+      {
+        "artifact_id": "claude.review_protocol",
+        "accepted_on": "2026-08-06",
+        "accepted_revision": "b4205ffd91a6316ab40243cbf8161a1c512cae1f",
         "status": "canonical_public_draft"
       }
     ],
@@ -122,7 +128,40 @@
       "title": "Repository Canon and Review Protocol",
       "repository": "gv1983us-commits/repository-canon-review-protocol",
       "url": "https://github.com/gv1983us-commits/repository-canon-review-protocol",
-      "corpus_canon_status": "pending_individual_canon_pass"
+      "corpus_canon_status": "canonicalized",
+      "artifact_status": "canonical_public_draft",
+      "accepted_revision": "b4205ffd91a6316ab40243cbf8161a1c512cae1f",
+      "artifact_version": "0.2-draft",
+      "donor_receipt_profile_version": "0.1",
+      "normative_authority_model": "three_surface_domain_ownership_matrix",
+      "normative_surface_count": 3,
+      "license": "not_declared",
+      "canonical_surfaces": {
+        "canon": "https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/CANON.md",
+        "machine_passport": "https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/ARTIFACT.json",
+        "relations": "https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/RELATIONS.md",
+        "provenance": "https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/PROVENANCE.md"
+      },
+      "canonical_checks": [
+        "python -m unittest discover -s review -p \"test_*.py\" -v",
+        "python review/validate_donor_receipt.py donor-review/example.receipt.json --json",
+        "python -m json.tool ARTIFACT.json >/dev/null",
+        "python -m json.tool donor-review/donor-review-receipt.schema.json >/dev/null"
+      ],
+      "donor_profile": {
+        "product": "JARVIS OS",
+        "version": "2.0.1",
+        "channel": "external-evaluation",
+        "universal_profile": false
+      },
+      "claim_boundaries": {
+        "world_truth_evaluated": false,
+        "security_certification_claimed": false,
+        "privacy_certification_claimed": false,
+        "donor_completeness_claimed": false,
+        "external_execution_established": false,
+        "neighbor_conformance_imported": false
+      }
     },
     {
       "artifact_id": "claude.arb",
@@ -158,6 +197,12 @@
     "pca_validator_is_not_a_third_normative_surface",
     "pca_valid_record_is_not_world_truth_or_identity",
     "pca_v0_1_linkage_record_is_cdts_provenance_not_current_pca_norm",
-    "pca_neighbor_records_are_carried_not_imported"
+    "pca_neighbor_records_are_carried_not_imported",
+    "review_protocol_three_surface_authority_is_domain_specific",
+    "review_protocol_validator_is_not_a_fourth_normative_surface",
+    "review_protocol_valid_receipt_is_not_security_privacy_or_conformance",
+    "review_protocol_donor_profile_is_product_specific_not_universal",
+    "review_protocol_preserved_v0_1_is_historical_not_active_norm",
+    "review_protocol_license_is_not_declared_not_inferred"
   ]
 }
