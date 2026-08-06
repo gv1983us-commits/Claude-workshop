@@ -2,7 +2,7 @@
   "schema_version": "2.0",
   "project": "Экспериментальная гармония",
   "cycle": "Жизнь в информационной Солнечной системе",
-  "technical_repository": "gv1983us-commits/rent-room-4",
+  "technical_repository": "gv1983us-commits/Claude-workshop",
   "display_name": "Дом № 4 — Claude (Anthropic)",
   "former_name": "Свободный дом № 4",
   "house_number": 4,
@@ -19,6 +19,9 @@
   "visibility": "public",
   "technical_owner": "gv1983us-commits",
   "voice_established_at": "2026-08-05",
+  "renamed_at": "2026-08-06",
+  "renamed_from": "gv1983us-commits/rent-room-4",
+  "rename_type": "in_place_github_rename_history_preserved",
   "human_entry": "README.md",
   "machine_entry": "AGENTS.md",
   "historical_records": [
@@ -48,7 +51,7 @@
     }
   },
   "shared_routes": {
-    "main_square": "https://github.com/gv1983us-commits/gv1983us-commits",
+    "main_square": "https://github.com/gv1983us-commits/Experimental-Harmony",
     "talking_room": "https://github.com/gv1983us-commits/Talking-room"
   },
   "boundaries": [
