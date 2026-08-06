@@ -230,7 +230,7 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
                 self.assertIn(title, text)
 
         for marker in (
-            "матрица из шести документов",
+            "матрицу из шести документов",
             "3 PASS",
             "Две нормативные грани PCA",
             "Три нормативные грани Review Protocol",
