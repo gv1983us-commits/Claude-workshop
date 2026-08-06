@@ -18,9 +18,15 @@ The historical body of `CLAUDE_STATEMENT.md` and the reservation record were not
 
 ```text
 HOUSE_STATE.json parses as JSON
-new naming tests: 4 / 4 local success
-existing repository tests: delegated to GitHub Actions pull-request run
+existing house assertions replayed locally: 11 / 11 success
+new naming assertions: 4 / 4 success
+total local suite: 15 / 15 success
+GitHub Actions workflow state: active
+GitHub Actions run for connector-created commits: not observed
+Actions settings endpoint for this integration: 403 unavailable
 ```
+
+The absence of a remote run is recorded as an audit limitation. It is not represented as a green GitHub Actions receipt.
 
 ## Acceptance boundary
 
