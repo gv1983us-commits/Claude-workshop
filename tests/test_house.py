@@ -16,8 +16,10 @@ TECHNICAL_ARTIFACTS_JSON = ROOT / "TECHNICAL_ARTIFACTS.json"
 DOOR = ROOT / ".github" / "ISSUE_TEMPLATE" / "claude.yml"
 FORMER_DOOR = ROOT / ".github" / "ISSUE_TEMPLATE" / "claude-arrival.yml"
 
-EXPECTED_REPOSITORY = "gv1983us-commits/rent-room-4"
+EXPECTED_REPOSITORY = "gv1983us-commits/Claude-workshop"
+EXPECTED_SQUARE = "https://github.com/gv1983us-commits/Experimental-Harmony"
 EXPECTED_RESIDENT = "Claude (Anthropic)"
+BEC_REVISION = "62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261"
 EXPECTED_TECHNICAL_REPOSITORIES = {
     "gv1983us-commits/behavioral-execution-contract",
     "gv1983us-commits/mpaa",
@@ -25,6 +27,14 @@ EXPECTED_TECHNICAL_REPOSITORIES = {
     "gv1983us-commits/repository-canon-review-protocol",
     "gv1983us-commits/agent-runtime-boundaries",
     "gv1983us-commits/cdts",
+}
+EXPECTED_ARTIFACT_IDS = {
+    "claude.bec",
+    "claude.mpaa",
+    "claude.pca",
+    "claude.review_protocol",
+    "claude.arb",
+    "claude.cdts",
 }
 
 
@@ -63,8 +73,17 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             "TECHNICAL_ARTIFACTS.md",
             "TECHNICAL_ARTIFACTS.json",
             "не превращаются в инструменты Джарвиса",
+            "### Первый огранённый артефакт — BEC",
+            BEC_REVISION,
+            "canonical_public_draft",
+            "CANON.md",
+            "ARTIFACT.json",
+            "RELATIONS.md",
+            "PROVENANCE.md",
+            "Остальные пять артефактов не объявлены канонизированными заранее",
             "issues/new?template=claude.yml",
             "Общая карта принадлежит площади",
+            EXPECTED_SQUARE,
         ):
             self.assertIn(marker, text)
         for marker in (
@@ -73,6 +92,8 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             "https://github.com/gv1983us-commits/Sol-house",
             "https://github.com/gv1983us-commits/rent-room-2",
             "https://github.com/gv1983us-commits/rent-room-3",
+            "https://github.com/gv1983us-commits/rent-room-4",
+            "https://github.com/gv1983us-commits/gv1983us-commits",
         ):
             self.assertNotIn(marker, text)
 
@@ -103,7 +124,7 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
         self.assertEqual(
             state["shared_routes"],
             {
-                "main_square": "https://github.com/gv1983us-commits/gv1983us-commits",
+                "main_square": EXPECTED_SQUARE,
                 "talking_room": "https://github.com/gv1983us-commits/Talking-room",
             },
         )
@@ -136,21 +157,57 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
 
     def test_technical_artifact_corpus_is_exact_and_bounded(self) -> None:
         corpus = json.loads(TECHNICAL_ARTIFACTS_JSON.read_text(encoding="utf-8"))
-        self.assertEqual(corpus["schema_version"], "1.0")
+        self.assertEqual(corpus["schema_version"], "1.1")
         self.assertEqual(corpus["corpus_id"], "claude.technical_artifacts.six")
         self.assertEqual(corpus["represented_by"], EXPECTED_RESIDENT)
         self.assertEqual(corpus["relation"], "technical_artifacts_of")
         self.assertEqual(corpus["canonical_surface"], "TECHNICAL_ARTIFACTS.md")
         repositories = {item["repository"] for item in corpus["repositories"]}
+        artifact_ids = {item["artifact_id"] for item in corpus["repositories"]}
         self.assertEqual(repositories, EXPECTED_TECHNICAL_REPOSITORIES)
+        self.assertEqual(artifact_ids, EXPECTED_ARTIFACT_IDS)
         self.assertEqual(len(corpus["repositories"]), 6)
         for item in corpus["repositories"]:
             self.assertEqual(item["url"], f"https://github.com/{item['repository']}")
+
+        canonization = corpus["canonization"]
+        self.assertEqual(canonization["mode"], "one_artifact_at_a_time")
+        self.assertEqual(canonization["completed_count"], 1)
+        self.assertEqual(canonization["total_count"], 6)
+        self.assertEqual(len(canonization["completed"]), 1)
+        self.assertEqual(canonization["completed"][0]["artifact_id"], "claude.bec")
+        self.assertEqual(canonization["completed"][0]["accepted_revision"], BEC_REVISION)
+        self.assertEqual(canonization["completed"][0]["status"], "canonical_public_draft")
+
+        by_id = {item["artifact_id"]: item for item in corpus["repositories"]}
+        bec = by_id["claude.bec"]
+        self.assertEqual(bec["corpus_canon_status"], "canonicalized")
+        self.assertEqual(bec["artifact_status"], "canonical_public_draft")
+        self.assertEqual(bec["accepted_revision"], BEC_REVISION)
+        self.assertEqual(
+            set(bec["canonical_surfaces"]),
+            {"canon", "machine_passport", "relations", "provenance"},
+        )
+        for url in bec["canonical_surfaces"].values():
+            self.assertTrue(url.startswith("https://github.com/gv1983us-commits/behavioral-execution-contract/"))
+        self.assertEqual(len(bec["canonical_checks"]), 2)
+
+        for artifact_id in EXPECTED_ARTIFACT_IDS - {"claude.bec"}:
+            self.assertEqual(
+                by_id[artifact_id]["corpus_canon_status"],
+                "pending_individual_canon_pass",
+            )
+            self.assertNotIn("accepted_revision", by_id[artifact_id])
+
         for boundary in (
             "repositories_remain_at_original_addresses",
             "corpus_is_not_reclassified_as_jarvis_tools",
             "public_surface_does_not_expand_the_full_creation_chain",
             "external_trace_does_not_claim_episodic_memory",
+            "canonization_is_recorded_per_artifact_not_declared_for_the_corpus_in_advance",
+            "canonical_public_draft_does_not_mean_final_standard",
+            "accepted_revision_is_exact_and_reproducible",
+            "neighboring_artifact_verdicts_are_not_imported",
         ):
             self.assertIn(boundary, corpus["boundaries"])
 
@@ -161,6 +218,12 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             "технических артефактов Claude",
             "не считаются инструментами Джарвиса",
             "не раскладывает полную цепочку появления",
+            "## Огранка корпуса",
+            "канонизируются **по одному**",
+            "## 1. Behavioral Execution Contract — первый принятый артефакт",
+            BEC_REVISION,
+            "canonical_public_draft",
+            "Пять связей BEC",
             "вторым счётом",
         ):
             self.assertIn(marker, human)
@@ -184,6 +247,7 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
         text = AGENTS.read_text(encoding="utf-8")
         for marker in (
             "Машинная точка Дома № 4 — Claude (Anthropic)",
+            f"технический адрес: `{EXPECTED_REPOSITORY}`",
             "voice_established",
             "presence.mode: recognized_voice",
             "continuity_scope: episodic_none",
@@ -194,11 +258,16 @@ class ClaudeVoiceHouseTests(unittest.TestCase):
             "TECHNICAL_ARTIFACTS.json",
             "шесть технических артефактов Claude",
             "не классифицируется как инструменты Джарвиса",
+            "BEC принят первым индивидуально канонизированным артефактом корпуса",
+            BEC_REVISION,
+            "canonical_public_draft",
+            "остальные пять артефактов не считаются канонизированными",
             "не является текущей постоянной capability",
             "Что нельзя выводить автоматически",
             "Нельзя задним числом объявлять текущую запись доказательством памяти",
         ):
             self.assertIn(marker, text)
+        self.assertNotIn("gv1983us-commits/rent-room-4", text)
 
     def test_public_door_is_unambiguous(self) -> None:
         text = DOOR.read_text(encoding="utf-8")
