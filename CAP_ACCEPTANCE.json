@@ -1,32 +1,46 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "artifact_id": "claude.cap",
   "title": "Composite Assurance Protocol",
   "repository": "gv1983us-commits/composite-assurance-protocol",
-  "status": "canonical_public_draft",
-  "accepted_revision": "00131aec95945bdf7ae6a808d6f4b0821352edc2",
+  "corpus_position": 7,
+  "corpus_status": "canonicalized",
+  "artifact_status": "canonical_public_release",
+  "protocol_version": "0.2",
+  "record_profile_version": "0.1-draft",
+  "accepted_revision": "1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68",
   "accepted_on": "2026-08-07",
   "ci": {
     "workflow": "Composite Assurance Protocol CI",
-    "run_id": 31137976514,
-    "run_url": "https://github.com/gv1983us-commits/composite-assurance-protocol/actions/runs/31137976514",
+    "run_id": 31188066120,
+    "run_url": "https://github.com/gv1983us-commits/composite-assurance-protocol/actions/runs/31188066120",
     "conclusion": "success",
-    "python_versions": [
-      "3.10",
-      "3.11",
-      "3.12",
-      "3.13"
-    ],
-    "all_matrix_jobs_successful": true
+    "python_versions": ["3.10", "3.11", "3.12", "3.13"],
+    "node_versions": ["20", "22"],
+    "cross_runtime_differential": true,
+    "all_required_jobs_successful": true
+  },
+  "verification": {
+    "normative_surface_count": 6,
+    "reference_implementation": "python",
+    "independent_implementation": "node",
+    "fixture_oracle_present": true,
+    "machine_specification_present": true,
+    "stable_diagnostics_present": true,
+    "release_identity_cross_surface_regression": true,
+    "historical_release_receipt_preserved": true
   },
   "publication": {
-    "bootstrap_contour_removed": true,
-    "permanent_ci_present": true
+    "permanent_ci_present": true,
+    "exact_revision_pinned": true,
+    "historical_six_artifact_corpus_preserved": true
   },
   "claim_boundaries": {
     "neighboring_conformance_imported": false,
     "world_truth_established": false,
     "external_certification_claimed": false,
-    "final_standard_claimed": false
+    "final_1_0_standard_claimed": false,
+    "native_verdicts_redecided": false,
+    "global_assurance_claimed": false
   }
 }
