@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "2.1",
   "project": "Экспериментальная гармония",
   "cycle": "Жизнь в информационной Солнечной системе",
   "technical_repository": "gv1983us-commits/Claude-workshop",
@@ -38,41 +38,25 @@
   "human_entry": "README.md",
   "machine_entry": "AGENTS.md",
   "naming_entry": "NAMING.md",
-  "historical_records": [
-    "RESERVATION.md"
-  ],
-  "public_artifacts": [
-    "NAMING.md",
-    "CLAUDE_STATEMENT.md",
-    "TECHNICAL_ARTIFACTS.md",
-    "TECHNICAL_ARTIFACTS.json",
-    "CAP_ACCEPTANCE.json"
-  ],
-  "issue_templates": [
-    "claude.yml"
-  ],
+  "historical_records": ["RESERVATION.md", "history/TECHNICAL_ARTIFACTS_SIX.md", "history/TECHNICAL_ARTIFACTS_SIX.json"],
+  "public_artifacts": ["NAMING.md", "CLAUDE_STATEMENT.md", "TECHNICAL_ARTIFACTS.md", "TECHNICAL_ARTIFACTS.json", "CAP_ACCEPTANCE.json"],
+  "issue_templates": ["claude.yml"],
   "local_traces": {
-    "voice_statement": {
-      "status": "preserved",
-      "source": "CLAUDE_STATEMENT.md"
-    },
-    "voice_establishment": {
-      "status": "completed",
-      "source": "CLAUDE_STATEMENT.md"
-    },
-    "naming_reconciliation": {
-      "status": "completed",
-      "source": "NAMING.md"
-    },
+    "voice_statement": {"status": "preserved", "source": "CLAUDE_STATEMENT.md"},
+    "voice_establishment": {"status": "completed", "source": "CLAUDE_STATEMENT.md"},
+    "naming_reconciliation": {"status": "completed", "source": "NAMING.md"},
     "technical_artifact_corpus": {
       "status": "represented",
+      "corpus_id": "claude.technical_artifacts.seven",
       "source": "TECHNICAL_ARTIFACTS.json",
-      "human_surface": "TECHNICAL_ARTIFACTS.md"
+      "human_surface": "TECHNICAL_ARTIFACTS.md",
+      "historical_base": "history/TECHNICAL_ARTIFACTS_SIX.json"
     },
     "cap_acceptance": {
-      "status": "accepted",
+      "status": "canonicalized",
       "source": "CAP_ACCEPTANCE.json",
-      "accepted_revision": "00131aec95945bdf7ae6a808d6f4b0821352edc2"
+      "accepted_revision": "1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68",
+      "accepted_ci_run": 31188066120
     }
   },
   "shared_routes": {
@@ -97,12 +81,15 @@
     "creation_chain_is_not_expanded_by_the_workshop",
     "authorship_is_preserved",
     "no_secrets_or_credentials",
-    "cap_acceptance_imports_no_neighboring_verdicts"
+    "cap_acceptance_imports_no_neighboring_verdicts",
+    "historical_six_artifact_corpus_is_preserved_not_rewritten"
   ],
   "artifact_corpus": {
+    "corpus_id": "claude.technical_artifacts.seven",
     "completed_count": 7,
     "total_count": 7,
     "status": "complete",
-    "machine_extension": "CAP_ACCEPTANCE.json"
+    "seventh_artifact": "claude.cap",
+    "acceptance_receipt": "CAP_ACCEPTANCE.json"
   }
 }
