@@ -5,6 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CAP_REVISION = "1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68"
 CAP_CI_RUN = 31188066120
+CANON_PARENT = "57df43ade6b4b53b974cd9dbaa2250767b2b9c0b"
 
 
 class CapCanonizationTests(unittest.TestCase):
@@ -45,6 +46,24 @@ class CapCanonizationTests(unittest.TestCase):
         self.assertIn("**CANONIZED**", review)
         self.assertIn("completed_count: 7", review)
         self.assertIn("total_count: 7", review)
+
+    def test_seventh_diamond_seal_is_bounded_and_exact(self):
+        seal = json.loads((ROOT / "SEVENTH_DIAMOND.json").read_text(encoding="utf-8"))
+        self.assertEqual("claude-technical-corpus-canon/7", seal["profile"])
+        self.assertEqual("CANON", seal["decision"])
+        self.assertEqual("claude.technical_artifacts.seven", seal["corpus_id"])
+        self.assertEqual(7, seal["completed_count"])
+        self.assertEqual(7, seal["total_count"])
+        self.assertEqual(CANON_PARENT, seal["workshop_canon_parent_revision"])
+        seventh = seal["seventh_artifact"]
+        self.assertEqual("claude.cap", seventh["artifact_id"])
+        self.assertEqual(CAP_REVISION, seventh["accepted_revision"])
+        self.assertEqual(CAP_CI_RUN, seventh["accepted_ci_run"])
+        self.assertEqual("success", seventh["accepted_ci_conclusion"])
+        self.assertEqual("canonical_public_release", seventh["artifact_status"])
+        self.assertTrue(all(value is False for value in seal["boundaries"].values()))
+        for relative in seal["surfaces"].values():
+            self.assertTrue((ROOT / relative).is_file(), relative)
 
     def test_seven_corpus_preserves_six_corpus_instead_of_rewriting_it(self):
         current = json.loads((ROOT / "TECHNICAL_ARTIFACTS.json").read_text(encoding="utf-8"))
