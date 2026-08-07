@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "profile": "claude-technical-corpus-canon/7",
+  "decision": "CANON",
+  "corpus_id": "claude.technical_artifacts.seven",
+  "completed_count": 7,
+  "total_count": 7,
+  "seventh_artifact": {
+    "artifact_id": "claude.cap",
+    "title": "Composite Assurance Protocol",
+    "repository": "gv1983us-commits/composite-assurance-protocol",
+    "protocol_version": "0.2",
+    "record_profile_version": "0.1-draft",
+    "artifact_status": "canonical_public_release",
+    "accepted_revision": "1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68",
+    "accepted_ci_run": 31188066120,
+    "accepted_ci_conclusion": "success"
+  },
+  "workshop_canon_parent_revision": "57df43ade6b4b53b974cd9dbaa2250767b2b9c0b",
+  "surfaces": {
+    "machine_corpus": "TECHNICAL_ARTIFACTS.json",
+    "human_corpus": "TECHNICAL_ARTIFACTS.md",
+    "acceptance_receipt": "CAP_ACCEPTANCE.json",
+    "human_acceptance_review": "review/2026-08-07_CAP_CANONIZATION.md",
+    "historical_six_machine": "history/TECHNICAL_ARTIFACTS_SIX.json",
+    "historical_six_human": "history/TECHNICAL_ARTIFACTS_SIX.md"
+  },
+  "boundaries": {
+    "historical_six_rewritten": false,
+    "neighboring_verdicts_imported": false,
+    "world_truth_claimed": false,
+    "external_certification_claimed": false,
+    "global_assurance_claimed": false,
+    "final_1_0_standard_claimed": false
+  }
+}
