@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "claude.cap",
+  "title": "Composite Assurance Protocol",
+  "repository": "gv1983us-commits/composite-assurance-protocol",
+  "status": "canonical_public_draft",
+  "accepted_revision": "00131aec95945bdf7ae6a808d6f4b0821352edc2",
+  "accepted_on": "2026-08-07",
+  "ci": {
+    "workflow": "Composite Assurance Protocol CI",
+    "run_id": 31137976514,
+    "run_url": "https://github.com/gv1983us-commits/composite-assurance-protocol/actions/runs/31137976514",
+    "conclusion": "success",
+    "python_versions": [
+      "3.10",
+      "3.11",
+      "3.12",
+      "3.13"
+    ],
+    "all_matrix_jobs_successful": true
+  },
+  "publication": {
+    "bootstrap_contour_removed": true,
+    "permanent_ci_present": true
+  },
+  "claim_boundaries": {
+    "neighboring_conformance_imported": false,
+    "world_truth_established": false,
+    "external_certification_claimed": false,
+    "final_standard_claimed": false
+  }
+}

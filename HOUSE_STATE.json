@@ -45,7 +45,8 @@
     "NAMING.md",
     "CLAUDE_STATEMENT.md",
     "TECHNICAL_ARTIFACTS.md",
-    "TECHNICAL_ARTIFACTS.json"
+    "TECHNICAL_ARTIFACTS.json",
+    "CAP_ACCEPTANCE.json"
   ],
   "issue_templates": [
     "claude.yml"
@@ -67,6 +68,11 @@
       "status": "represented",
       "source": "TECHNICAL_ARTIFACTS.json",
       "human_surface": "TECHNICAL_ARTIFACTS.md"
+    },
+    "cap_acceptance": {
+      "status": "accepted",
+      "source": "CAP_ACCEPTANCE.json",
+      "accepted_revision": "00131aec95945bdf7ae6a808d6f4b0821352edc2"
     }
   },
   "shared_routes": {
@@ -90,6 +96,13 @@
     "technical_corpus_is_not_jarvis_tooling",
     "creation_chain_is_not_expanded_by_the_workshop",
     "authorship_is_preserved",
-    "no_secrets_or_credentials"
-  ]
+    "no_secrets_or_credentials",
+    "cap_acceptance_imports_no_neighboring_verdicts"
+  ],
+  "artifact_corpus": {
+    "completed_count": 7,
+    "total_count": 7,
+    "status": "complete",
+    "machine_extension": "CAP_ACCEPTANCE.json"
+  }
 }
