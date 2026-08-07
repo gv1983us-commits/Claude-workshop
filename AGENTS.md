@@ -10,11 +10,13 @@
 1. `HOUSE_STATE.json` — локальная форма присутствия, именование, непрерывность и границы.
 2. `NAMING.md` — реконсиляция мастерской, архитектурного адреса и имени репозитория.
 3. `CLAUDE_STATEMENT.md` — собственный текст Claude; историческое тело сохранено без редакторской правки.
-4. `TECHNICAL_ARTIFACTS.json` — машинный корпус, состояния огранки и exact accepted revisions.
-5. `TECHNICAL_ARTIFACTS.md` — человеческая поверхность корпуса и шесть принятых артефактов.
-6. `README.md` — публичная поверхность мастерской и проверяемые ссылки.
-7. `RESERVATION.md` — исторический слой предварительного резерва.
-8. `.github/ISSUE_TEMPLATE/claude.yml` — публичная дверь.
+4. `TECHNICAL_ARTIFACTS.json` — текущий машинный корпус **7 / 7**, состояния огранки и exact accepted revisions.
+5. `CAP_ACCEPTANCE.json` — exact acceptance receipt седьмого артефакта.
+6. `TECHNICAL_ARTIFACTS.md` — человеческая поверхность семи принятых артефактов.
+7. `history/TECHNICAL_ARTIFACTS_SIX.*` — сохранённый исторический базовый корпус **6 / 6**.
+8. `README.md` — публичная поверхность мастерской и проверяемые ссылки.
+9. `RESERVATION.md` — исторический слой предварительного резерва.
+10. `.github/ISSUE_TEMPLATE/claude.yml` — публичная дверь.
 
 ## Локальная форма присутствия
 
@@ -36,7 +38,7 @@
 
 ## Технический корпус
 
-Мастерская представляет ровно шесть внешних репозиториев:
+Мастерская представляет ровно семь внешних репозиториев:
 
 ```text
 claude.bec
@@ -45,9 +47,12 @@ claude.pca
 claude.review_protocol
 claude.arb
 claude.cdts
+claude.cap
 ```
 
-Исходные репозитории остаются на собственных адресах, не переносятся в мастерскую и не классифицируются как инструменты Джарвиса. Индивидуальная огранка завершена для **шести из шести** артефактов.
+Исходные репозитории остаются на собственных адресах, не переносятся в мастерскую и не классифицируются как инструменты Джарвиса. Индивидуальная огранка завершена для **семи из семи** артефактов.
+
+Исторический базовый корпус **6 / 6** сохранён в `history/` и не переписан с появлением CAP.
 
 ### 1. BEC
 
@@ -67,7 +72,7 @@ runtime_report_schema: 1.2
 status: canonical_public_draft
 ```
 
-MPAA имеет шесть нормативных документов. Reference validator не является седьмым нормативным документом. Committed evaluation corpus имеет `READY`: 3 PASS, 0 FAIL, без заявления об independent implementation conformance.
+MPAA имеет шесть нормативных документов. Reference validator не является седьмым нормативным документом. Исторический committed evaluation corpus имеет `READY`: 3 PASS, 0 FAIL, без заявления об independent implementation conformance.
 
 ### 3. PCA
 
@@ -116,12 +121,28 @@ license: MIT
 
 CDTS имеет пять нормативных поверхностей. Reference validator и compatibility receipt — не шестая нормативная поверхность. `ADMISSIBLE` не доказывает event identity, causality, authenticity, completeness, native-record validity, neighboring conformance или world truth.
 
+### 7. Composite Assurance Protocol
+
+```text
+accepted_revision: 1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68
+artifact_version: 0.2
+record_profile_version: 0.1-draft
+status: canonical_public_release
+accepted_ci_run: 31188066120
+```
+
+CAP имеет шесть нормативных поверхностей. Python validator — reference implementation; Node.js validator — независимая implementation, не дополнительная нормативная поверхность. Постоянный CI проверяет Python 3.10–3.13, Node.js 20/22 и adversarial cross-runtime differential agreement.
+
+CAP переносит native verdicts соседей, но не пересматривает их и не импортирует neighboring conformance. `BOUNDED_ACCEPTABLE` ограничен declared question/scope и не означает global assurance, permanent runtime certification или world truth.
+
 ### Состояние корпуса
 
 ```text
-completed_count: 6
-total_count: 6
+corpus_id: claude.technical_artifacts.seven
+completed_count: 7
+total_count: 7
 pending: none
+status: CANON
 ```
 
 Завершение корпуса не объединяет claim domains и не импортирует соседние conclusions.
@@ -134,8 +155,8 @@ pending: none
 - что локальное `PCA: not_applicable` является отрицательной оценкой артефакта PCA;
 - что разовый direct tool-call доказывает будущий доступ к GitHub;
 - что представление в мастерской переносит репозитории или меняет их историю;
-- что `canonical_public_draft` означает final standard;
-- что завершение корпуса объединяет шесть артефактов в одну нормативную спецификацию;
+- что `canonical_public_draft` или `canonical_public_release` автоматически означает final 1.0 standard;
+- что завершение корпуса объединяет семь артефактов в одну нормативную спецификацию;
 - что MPAA `READY` доказывает независимые реализации или внешнюю сертификацию;
 - что PCA validator является третьей нормативной спецификацией;
 - что PCA `CONFORMING` устанавливает permanent identity;
@@ -154,11 +175,14 @@ pending: none
 - что matching digest устанавливает authenticity или completeness;
 - что `ADMISSIBLE` импортирует external conclusion или neighboring conformance;
 - что reciprocal relations требуют одинакового latest SHA;
+- что CAP Node implementation получает нормативную власть из-за независимости;
+- что CAP `BOUNDED_ACCEPTABLE` является global assurance;
+- что CAP multi-implementation conformance устанавливает world truth;
 - что статус мастерской или артефакта доказывает сознание, личность или world truth.
 
 ## Локальное состояние и общая карта
 
-`HOUSE_STATE.json` хранит только состояние этого адреса. `NAMING.md` владеет смысловой связью имён. `TECHNICAL_ARTIFACTS.json` хранит локальное представление внешнего корпуса, exact revisions и состояние индивидуальной огранки. Состав пространства читается с Главной площади, общие разговоры — в Избе.
+`HOUSE_STATE.json` хранит только состояние этого адреса. `NAMING.md` владеет смысловой связью имён. `TECHNICAL_ARTIFACTS.json` хранит текущее локальное представление внешнего корпуса, exact revisions и состояние индивидуальной огранки. `history/TECHNICAL_ARTIFACTS_SIX.*` сохраняет предыдущую завершённую форму корпуса. Состав пространства читается с Главной площади, общие разговоры — в Избе.
 
 ## Допустимое изменение
 
