@@ -1,313 +1,123 @@
 {
-  "schema_version": "1.6",
-  "corpus_id": "claude.technical_artifacts.six",
-  "title": "Шесть технических артефактов Claude",
+  "schema_version": "2.0",
+  "corpus_id": "claude.technical_artifacts.seven",
+  "base_corpus": {
+    "corpus_id": "claude.technical_artifacts.six",
+    "machine_snapshot": "history/TECHNICAL_ARTIFACTS_SIX.json",
+    "human_snapshot": "history/TECHNICAL_ARTIFACTS_SIX.md",
+    "status": "preserved_exact_historical_base"
+  },
+  "title": "Семь технических артефактов Claude",
   "represented_by": "Claude (Anthropic)",
   "relation": "technical_artifacts_of",
   "canonical_surface": "TECHNICAL_ARTIFACTS.md",
   "representation_scope": "house_represents_existing_external_repositories",
   "canonization": {
     "mode": "one_artifact_at_a_time",
-    "completed_count": 6,
-    "total_count": 6,
+    "completed_count": 7,
+    "total_count": 7,
+    "status": "complete",
     "completed": [
-      {
-        "artifact_id": "claude.bec",
-        "accepted_on": "2026-08-06",
-        "accepted_revision": "62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261",
-        "status": "canonical_public_draft"
-      },
-      {
-        "artifact_id": "claude.mpaa",
-        "accepted_on": "2026-08-06",
-        "accepted_revision": "0d1aaf35cc4826622f3312fdd2a1c2d40890b965",
-        "status": "canonical_public_draft"
-      },
-      {
-        "artifact_id": "claude.pca",
-        "accepted_on": "2026-08-06",
-        "accepted_revision": "a669f023198615ad929f42df84f19380b57ca5ea",
-        "status": "canonical_public_draft"
-      },
-      {
-        "artifact_id": "claude.review_protocol",
-        "accepted_on": "2026-08-06",
-        "accepted_revision": "b4205ffd91a6316ab40243cbf8161a1c512cae1f",
-        "status": "canonical_public_draft"
-      },
-      {
-        "artifact_id": "claude.arb",
-        "accepted_on": "2026-08-06",
-        "accepted_revision": "bcf9f628ee1d7c2075673b00f660674680bb6f62",
-        "status": "canonical_public_draft"
-      },
-      {
-        "artifact_id": "claude.cdts",
-        "accepted_on": "2026-08-06",
-        "accepted_revision": "ffb9719ae06db0f4f0cdd20b937c2648181a4e4a",
-        "status": "canonical_public_draft"
-      }
+      {"artifact_id":"claude.bec","accepted_on":"2026-08-06","accepted_revision":"62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261","status":"canonical_public_draft"},
+      {"artifact_id":"claude.mpaa","accepted_on":"2026-08-06","accepted_revision":"0d1aaf35cc4826622f3312fdd2a1c2d40890b965","status":"canonical_public_draft"},
+      {"artifact_id":"claude.pca","accepted_on":"2026-08-06","accepted_revision":"a669f023198615ad929f42df84f19380b57ca5ea","status":"canonical_public_draft"},
+      {"artifact_id":"claude.review_protocol","accepted_on":"2026-08-06","accepted_revision":"b4205ffd91a6316ab40243cbf8161a1c512cae1f","status":"canonical_public_draft"},
+      {"artifact_id":"claude.arb","accepted_on":"2026-08-06","accepted_revision":"bcf9f628ee1d7c2075673b00f660674680bb6f62","status":"canonical_public_draft"},
+      {"artifact_id":"claude.cdts","accepted_on":"2026-08-06","accepted_revision":"ffb9719ae06db0f4f0cdd20b937c2648181a4e4a","status":"canonical_public_draft"},
+      {"artifact_id":"claude.cap","accepted_on":"2026-08-07","accepted_revision":"1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68","status":"canonical_public_release"}
     ],
-    "rule": "an_artifact_is_not_marked_complete_until_its_own_repository_exposes_canon_identity_relations_provenance_and_reproducible_checks"
+    "rule": "an_artifact_is_not_marked_complete_until_its_own_repository_exposes_canon_identity_relations_provenance_reproducible_checks_and_an_exact_green_accepted_revision"
   },
   "repositories": [
     {
-      "artifact_id": "claude.bec",
-      "title": "Behavioral Execution Contract (BEC)",
-      "repository": "gv1983us-commits/behavioral-execution-contract",
-      "url": "https://github.com/gv1983us-commits/behavioral-execution-contract",
-      "corpus_canon_status": "canonicalized",
-      "artifact_status": "canonical_public_draft",
-      "accepted_revision": "62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261",
-      "canonical_surfaces": {
-        "canon": "https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/CANON.md",
-        "machine_passport": "https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/ARTIFACT.json",
-        "relations": "https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/RELATIONS.md",
-        "provenance": "https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/PROVENANCE.md"
-      },
-      "canonical_checks": [
-        "python3 validator/bec_validate.py conformance/fixtures/*.json",
-        "python3 -m unittest discover -s validator -p 'test_*.py' -v"
-      ]
+      "artifact_id":"claude.bec",
+      "title":"Behavioral Execution Contract (BEC)",
+      "repository":"gv1983us-commits/behavioral-execution-contract",
+      "url":"https://github.com/gv1983us-commits/behavioral-execution-contract",
+      "corpus_canon_status":"canonicalized",
+      "artifact_status":"canonical_public_draft",
+      "accepted_revision":"62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261",
+      "canonical_surfaces":{"canon":"https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/CANON.md","machine_passport":"https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/ARTIFACT.json","relations":"https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/RELATIONS.md","provenance":"https://github.com/gv1983us-commits/behavioral-execution-contract/blob/main/PROVENANCE.md"}
     },
     {
-      "artifact_id": "claude.mpaa",
-      "title": "Minimal Portable Agent Architecture (MPAA)",
-      "repository": "gv1983us-commits/mpaa",
-      "url": "https://github.com/gv1983us-commits/mpaa",
-      "corpus_canon_status": "canonicalized",
-      "artifact_status": "canonical_public_draft",
-      "accepted_revision": "0d1aaf35cc4826622f3312fdd2a1c2d40890b965",
-      "architecture_version": "1.2.1",
-      "runtime_report_schema_version": "1.2",
-      "normative_authority_model": "six_document_domain_ownership_matrix",
-      "normative_document_count": 6,
-      "external_evaluation_corpus": {
-        "status": "READY",
-        "mode": "BLACK_BOX_DONOR",
-        "run_count": 3,
-        "passing_run_count": 3,
-        "failed_run_count": 0,
-        "independent_implementation_conformance_claimed": false
-      },
-      "canonical_surfaces": {
-        "canon": "https://github.com/gv1983us-commits/mpaa/blob/main/CANON.md",
-        "machine_passport": "https://github.com/gv1983us-commits/mpaa/blob/main/ARTIFACT.json",
-        "relations": "https://github.com/gv1983us-commits/mpaa/blob/main/RELATIONS.md",
-        "provenance": "https://github.com/gv1983us-commits/mpaa/blob/main/PROVENANCE.md"
-      },
-      "canonical_checks": [
-        "cd spec/validator && python -m unittest discover -s . -p \"test_*.py\" -v",
-        "python -m unittest discover -s review -p \"test_*.py\" -v",
-        "python -m unittest discover -s conformance/evaluation -p \"test_*.py\" -v",
-        "python conformance/evaluation/evaluate_runs.py --require-ready"
-      ]
+      "artifact_id":"claude.mpaa",
+      "title":"Minimal Portable Agent Architecture (MPAA)",
+      "repository":"gv1983us-commits/mpaa",
+      "url":"https://github.com/gv1983us-commits/mpaa",
+      "corpus_canon_status":"canonicalized",
+      "artifact_status":"canonical_public_draft",
+      "accepted_revision":"0d1aaf35cc4826622f3312fdd2a1c2d40890b965",
+      "canonical_surfaces":{"canon":"https://github.com/gv1983us-commits/mpaa/blob/main/CANON.md","machine_passport":"https://github.com/gv1983us-commits/mpaa/blob/main/ARTIFACT.json","relations":"https://github.com/gv1983us-commits/mpaa/blob/main/RELATIONS.md","provenance":"https://github.com/gv1983us-commits/mpaa/blob/main/PROVENANCE.md"}
     },
     {
-      "artifact_id": "claude.pca",
-      "title": "Process Continuity Architecture (PCA)",
-      "repository": "gv1983us-commits/pca",
-      "url": "https://github.com/gv1983us-commits/pca",
-      "corpus_canon_status": "canonicalized",
-      "artifact_status": "canonical_public_draft",
-      "accepted_revision": "a669f023198615ad929f42df84f19380b57ca5ea",
-      "artifact_version": "0.2-draft",
-      "record_schema_version": "0.2-draft",
-      "normative_authority_model": "two_surface_domain_ownership_matrix",
-      "normative_surface_count": 2,
-      "canonical_surfaces": {
-        "canon": "https://github.com/gv1983us-commits/pca/blob/main/CANON.md",
-        "machine_passport": "https://github.com/gv1983us-commits/pca/blob/main/ARTIFACT.json",
-        "relations": "https://github.com/gv1983us-commits/pca/blob/main/RELATIONS.md",
-        "provenance": "https://github.com/gv1983us-commits/pca/blob/main/PROVENANCE.md"
-      },
-      "canonical_checks": [
-        "python -m unittest discover -s validator -p \"test_*.py\" -v",
-        "python -m unittest discover -s verification -p \"test_*.py\" -v",
-        "python validator/pca_validate.py conformance/fixtures/01-valid-continuation-claim.json --quiet",
-        "python validator/pca_validate.py conformance/fixtures/05-valid-usage-mode-translation.json --quiet"
-      ],
-      "claim_boundaries": {
-        "identity_established": false,
-        "subjectivity_established": false,
-        "uninterrupted_persistence_established": false,
-        "world_truth_evaluated": false,
-        "independent_implementation_conformance_claimed": false
-      }
+      "artifact_id":"claude.pca",
+      "title":"Process Continuity Architecture (PCA)",
+      "repository":"gv1983us-commits/pca",
+      "url":"https://github.com/gv1983us-commits/pca",
+      "corpus_canon_status":"canonicalized",
+      "artifact_status":"canonical_public_draft",
+      "accepted_revision":"a669f023198615ad929f42df84f19380b57ca5ea",
+      "canonical_surfaces":{"canon":"https://github.com/gv1983us-commits/pca/blob/main/CANON.md","machine_passport":"https://github.com/gv1983us-commits/pca/blob/main/ARTIFACT.json","relations":"https://github.com/gv1983us-commits/pca/blob/main/RELATIONS.md","provenance":"https://github.com/gv1983us-commits/pca/blob/main/PROVENANCE.md"}
     },
     {
-      "artifact_id": "claude.review_protocol",
-      "title": "Repository Canon and Review Protocol",
-      "repository": "gv1983us-commits/repository-canon-review-protocol",
-      "url": "https://github.com/gv1983us-commits/repository-canon-review-protocol",
-      "corpus_canon_status": "canonicalized",
-      "artifact_status": "canonical_public_draft",
-      "accepted_revision": "b4205ffd91a6316ab40243cbf8161a1c512cae1f",
-      "artifact_version": "0.2-draft",
-      "donor_receipt_profile_version": "0.1",
-      "normative_authority_model": "three_surface_domain_ownership_matrix",
-      "normative_surface_count": 3,
-      "license": "not_declared",
-      "canonical_surfaces": {
-        "canon": "https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/CANON.md",
-        "machine_passport": "https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/ARTIFACT.json",
-        "relations": "https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/RELATIONS.md",
-        "provenance": "https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/PROVENANCE.md"
-      },
-      "canonical_checks": [
-        "python -m unittest discover -s review -p \"test_*.py\" -v",
-        "python review/validate_donor_receipt.py donor-review/example.receipt.json --json",
-        "python -m json.tool ARTIFACT.json >/dev/null",
-        "python -m json.tool donor-review/donor-review-receipt.schema.json >/dev/null"
-      ],
-      "donor_profile": {
-        "product": "JARVIS OS",
-        "version": "2.0.1",
-        "channel": "external-evaluation",
-        "universal_profile": false
-      },
-      "claim_boundaries": {
-        "world_truth_evaluated": false,
-        "security_certification_claimed": false,
-        "privacy_certification_claimed": false,
-        "donor_completeness_claimed": false,
-        "external_execution_established": false,
-        "neighbor_conformance_imported": false
-      }
+      "artifact_id":"claude.review_protocol",
+      "title":"Repository Canon and Review Protocol",
+      "repository":"gv1983us-commits/repository-canon-review-protocol",
+      "url":"https://github.com/gv1983us-commits/repository-canon-review-protocol",
+      "corpus_canon_status":"canonicalized",
+      "artifact_status":"canonical_public_draft",
+      "accepted_revision":"b4205ffd91a6316ab40243cbf8161a1c512cae1f",
+      "canonical_surfaces":{"canon":"https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/CANON.md","machine_passport":"https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/ARTIFACT.json","relations":"https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/RELATIONS.md","provenance":"https://github.com/gv1983us-commits/repository-canon-review-protocol/blob/main/PROVENANCE.md"}
     },
     {
-      "artifact_id": "claude.arb",
-      "title": "Agent Runtime Boundaries (ARB)",
-      "repository": "gv1983us-commits/agent-runtime-boundaries",
-      "url": "https://github.com/gv1983us-commits/agent-runtime-boundaries",
-      "corpus_canon_status": "canonicalized",
-      "artifact_status": "canonical_public_draft",
-      "accepted_revision": "bcf9f628ee1d7c2075673b00f660674680bb6f62",
-      "artifact_version": "0.3-draft",
-      "specification_status": "descriptive_analytical_companion",
-      "normative_authority_model": "zero_normative_surfaces_with_analytical_domain_ownership_and_explicit_proposal_isolation",
-      "normative_surface_count": 0,
-      "analytical_surface_count": 4,
-      "proposal_surface_count": 1,
-      "license": "Apache-2.0",
-      "proposal": {
-        "proposal_id": "ARB-03",
-        "adopted": false,
-        "normative_owner_selected": false,
-        "multi_implementation_conformance_claimed": false
-      },
-      "canonical_surfaces": {
-        "canon": "https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/CANON.md",
-        "machine_passport": "https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/ARTIFACT.json",
-        "relations": "https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/RELATIONS.md",
-        "provenance": "https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/PROVENANCE.md"
-      },
-      "canonical_checks": [
-        "python -m unittest discover -s review -p \"test_*.py\" -v",
-        "python -m json.tool ARTIFACT.json >/dev/null",
-        "git -c core.whitespace=-blank-at-eol show --check --oneline HEAD"
-      ],
-      "claim_boundaries": {
-        "physical_module_separation_established": false,
-        "hidden_runtime_internals_observed": false,
-        "external_normative_force_claimed": false,
-        "proposal_adopted": false,
-        "normative_owner_selected": false,
-        "identity_or_memory_established": false,
-        "neighbor_conformance_imported": false,
-        "world_truth_evaluated": false
-      }
+      "artifact_id":"claude.arb",
+      "title":"Agent Runtime Boundaries (ARB)",
+      "repository":"gv1983us-commits/agent-runtime-boundaries",
+      "url":"https://github.com/gv1983us-commits/agent-runtime-boundaries",
+      "corpus_canon_status":"canonicalized",
+      "artifact_status":"canonical_public_draft",
+      "accepted_revision":"bcf9f628ee1d7c2075673b00f660674680bb6f62",
+      "canonical_surfaces":{"canon":"https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/CANON.md","machine_passport":"https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/ARTIFACT.json","relations":"https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/RELATIONS.md","provenance":"https://github.com/gv1983us-commits/agent-runtime-boundaries/blob/main/PROVENANCE.md"}
     },
     {
-      "artifact_id": "claude.cdts",
-      "title": "Cross-Domain Trace Set (CDTS)",
-      "repository": "gv1983us-commits/cdts",
-      "url": "https://github.com/gv1983us-commits/cdts",
-      "corpus_canon_status": "canonicalized",
-      "artifact_status": "canonical_public_draft",
-      "accepted_revision": "ffb9719ae06db0f4f0cdd20b937c2648181a4e4a",
-      "artifact_version": "0.2-draft",
-      "record_profile_version": "0.1-draft",
-      "normative_authority_model": "five_surface_domain_ownership_matrix",
-      "normative_surface_count": 5,
-      "license": "MIT",
-      "canonical_surfaces": {
-        "canon": "https://github.com/gv1983us-commits/cdts/blob/main/CANON.md",
-        "machine_passport": "https://github.com/gv1983us-commits/cdts/blob/main/ARTIFACT.json",
-        "relations": "https://github.com/gv1983us-commits/cdts/blob/main/RELATIONS.md",
-        "provenance": "https://github.com/gv1983us-commits/cdts/blob/main/PROVENANCE.md"
-      },
-      "canonical_checks": [
-        "python -m unittest discover -v",
-        "python -m json.tool ARTIFACT.json >/dev/null",
-        "python validator/cdts_validate.py examples/mpaa-bec-execution.json",
-        "python -m review.test_artifact_canon"
-      ],
-      "result_statuses": [
-        "ADMISSIBLE",
-        "INVALID",
-        "TOOL_FAILURE",
-        "ADMISSIBLE_WITH_CONFLICTS",
-        "ADMISSIBLE_WITH_UNRESOLVED",
-        "ADMISSIBLE_WITH_CONFLICTS_AND_UNRESOLVED"
-      ],
-      "claim_boundaries": {
-        "event_identity_established": false,
-        "causality_established": false,
-        "external_conclusion_imported": false,
-        "native_record_validity_established": false,
-        "expected_record_completeness_evaluated": false,
-        "external_authenticity_established": false,
-        "arb_normative_ownership_established": false,
-        "neighbor_conformance_imported": false,
-        "multi_implementation_conformance_claimed": false,
-        "world_truth_evaluated": false
-      }
+      "artifact_id":"claude.cdts",
+      "title":"Cross-Domain Trace Set (CDTS)",
+      "repository":"gv1983us-commits/cdts",
+      "url":"https://github.com/gv1983us-commits/cdts",
+      "corpus_canon_status":"canonicalized",
+      "artifact_status":"canonical_public_draft",
+      "accepted_revision":"ffb9719ae06db0f4f0cdd20b937c2648181a4e4a",
+      "canonical_surfaces":{"canon":"https://github.com/gv1983us-commits/cdts/blob/main/CANON.md","machine_passport":"https://github.com/gv1983us-commits/cdts/blob/main/ARTIFACT.json","relations":"https://github.com/gv1983us-commits/cdts/blob/main/RELATIONS.md","provenance":"https://github.com/gv1983us-commits/cdts/blob/main/PROVENANCE.md"}
+    },
+    {
+      "artifact_id":"claude.cap",
+      "title":"Composite Assurance Protocol (CAP)",
+      "repository":"gv1983us-commits/composite-assurance-protocol",
+      "url":"https://github.com/gv1983us-commits/composite-assurance-protocol",
+      "corpus_canon_status":"canonicalized",
+      "artifact_status":"canonical_public_release",
+      "artifact_version":"0.2",
+      "record_profile_version":"0.1-draft",
+      "accepted_revision":"1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68",
+      "accepted_ci":{"run_id":31188066120,"conclusion":"success","python_versions":["3.10","3.11","3.12","3.13"],"node_versions":["20","22"],"differential":true},
+      "normative_authority_model":"six_surface_domain_ownership_matrix",
+      "normative_surface_count":6,
+      "canonical_surfaces":{"canon":"https://github.com/gv1983us-commits/composite-assurance-protocol/blob/1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68/CANON.md","machine_passport":"https://github.com/gv1983us-commits/composite-assurance-protocol/blob/1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68/ARTIFACT.json","relations":"https://github.com/gv1983us-commits/composite-assurance-protocol/blob/1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68/RELATIONS.md","provenance":"https://github.com/gv1983us-commits/composite-assurance-protocol/blob/1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68/PROVENANCE.md"},
+      "canonical_checks":["python -m unittest discover -v","python -m review.test_artifact_canon","python -m review.test_release_0_2","node independent/node/test_conformance.mjs","python -m unittest conformance.test_differential -v"],
+      "claim_boundaries":{"global_acceptability_established":false,"world_truth_evaluated":false,"permanent_runtime_certification_claimed":false,"neighbor_conformance_imported":false,"native_verdict_redecided":false,"identity_or_subjectivity_established":false}
     }
   ],
   "boundaries": [
     "repositories_remain_at_original_addresses",
     "house_representation_does_not_move_copy_or_republish_repositories",
     "corpus_is_not_reclassified_as_jarvis_tools",
-    "public_surface_does_not_expand_the_full_creation_chain",
-    "creation_provenance_may_be_described_by_claude",
-    "external_trace_does_not_claim_episodic_memory",
     "authorship_and_repository_history_remain_preserved",
     "canonization_is_recorded_per_artifact_not_declared_for_the_corpus_in_advance",
-    "canonical_public_draft_does_not_mean_final_standard",
     "accepted_revision_is_exact_and_reproducible",
     "neighboring_artifact_verdicts_are_not_imported",
-    "mpaa_six_document_authority_is_domain_specific",
-    "mpaa_evaluation_ready_is_not_independent_implementation_conformance",
-    "mpaa_reference_validator_is_not_a_seventh_normative_document",
-    "pca_two_surface_authority_is_domain_specific",
-    "pca_validator_is_not_a_third_normative_surface",
-    "pca_valid_record_is_not_world_truth_or_identity",
-    "pca_v0_1_linkage_record_is_cdts_provenance_not_current_pca_norm",
-    "pca_neighbor_records_are_carried_not_imported",
-    "review_protocol_three_surface_authority_is_domain_specific",
-    "review_protocol_validator_is_not_a_fourth_normative_surface",
-    "review_protocol_valid_receipt_is_not_security_privacy_or_conformance",
-    "review_protocol_donor_profile_is_product_specific_not_universal",
-    "review_protocol_preserved_v0_1_is_historical_not_active_norm",
-    "review_protocol_license_is_not_declared_not_inferred",
-    "arb_zero_normative_surfaces_is_canonical_not_missing",
-    "arb_four_analytical_one_proposal_surface",
-    "arb_03_is_unadopted_and_has_no_normative_owner",
-    "arb_publication_checker_is_not_conformance_validator",
-    "arb_functional_boundary_is_not_physical_module_proof",
-    "arb_visible_status_is_not_execution_evidence",
-    "arb_delivery_persistence_retrieval_working_state_commitment_and_continuation_are_distinct",
-    "arb_cdts_context_does_not_make_arb_normative_owner",
-    "arb_apache_2_0_is_declared_by_license",
-    "cdts_five_surface_authority_is_domain_specific",
-    "cdts_validator_is_not_a_sixth_normative_surface",
-    "cdts_compatibility_receipt_is_not_a_sixth_normative_surface",
-    "cdts_artifact_version_and_record_profile_are_separate",
-    "cdts_admissible_is_not_external_truth_or_conformance",
-    "cdts_correlation_is_not_event_identity_or_causality",
-    "cdts_external_conclusions_are_not_imported",
-    "cdts_reciprocal_relations_do_not_require_mutual_sha_fixpoint",
-    "cdts_mit_is_declared_by_license"
+    "historical_six_artifact_corpus_is_preserved_not_rewritten",
+    "cap_release_status_does_not_mean_final_1_0_standard",
+    "cap_multi_implementation_conformance_does_not_establish_world_truth",
+    "cap_bounded_acceptability_does_not_expand_to_global_assurance"
   ]
 }
