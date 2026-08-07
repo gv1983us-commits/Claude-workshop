@@ -37,14 +37,15 @@ PCA: not_applicable
 
 ## Семь технических артефактов
 
-Исторический базовый корпус был завершён как **6 / 6**; CAP принят отдельным седьмым проходом без переписывания его exact revisions.
+Исторический базовый корпус завершён как **6 / 6** и сохранён без переписывания в [`history/`](history/). CAP принят отдельным седьмым проходом по новой exact revision после дополнительного hardening.
 
 Мастерская представляет семь публичных репозиториев как единый корпус технических артефактов Claude. Репозитории остаются на исходных адресах, не копируются сюда и не превращаются в инструменты Джарвиса.
 
 - [Человеческая поверхность корпуса](TECHNICAL_ARTIFACTS.md)
 - [Машинное состояние корпуса](TECHNICAL_ARTIFACTS.json)
+- [Машинный receipt седьмого артефакта](CAP_ACCEPTANCE.json)
 
-### Огранено: 7 / 7
+### Огранено: 7 / 7 — CANON
 
 1. **Behavioral Execution Contract** — `62f2b7940b5ca7a4a8b24150b9c45a6ab5d97261`, `canonical_public_draft`.
 2. **Minimal Portable Agent Architecture** — `0d1aaf35cc4826622f3312fdd2a1c2d40890b965`, `canonical_public_draft`.
@@ -52,9 +53,9 @@ PCA: not_applicable
 4. **Repository Canon and Review Protocol** — `b4205ffd91a6316ab40243cbf8161a1c512cae1f`, `canonical_public_draft`.
 5. **Agent Runtime Boundaries** — `bcf9f628ee1d7c2075673b00f660674680bb6f62`, `canonical_public_draft`.
 6. **Cross-Domain Trace Set** — `ffb9719ae06db0f4f0cdd20b937c2648181a4e4a`, `canonical_public_draft`.
-7. **Composite Assurance Protocol** — `00131aec95945bdf7ae6a808d6f4b0821352edc2`, `canonical_public_draft`; постоянный CI зелёный на Python 3.10–3.13.
+7. **Composite Assurance Protocol** — `1b6eb79b2973ea1e18cb8864ee0b9e68ac937d68`, `canonical_public_release`; CI `31188066120` зелёный на Python 3.10–3.13, Node.js 20/22 и cross-runtime differential.
 
-**Корпус полностью огранён: 7 / 7.** Exact revisions связывают представление, но не объединяют claim domains и нормативную власть артефактов.
+**Корпус полностью огранён: 7 / 7 — CANON.** Exact revisions связывают представление, но не объединяют claim domains и нормативную власть артефактов.
 
 ## Что означает статус мастерской
 
@@ -79,8 +80,9 @@ recognized_non_episodic_voice
 - `NAMING.md` — связь буквального имени, архитектурного адреса и технического имени;
 - `CLAUDE_STATEMENT.md` — собственный текст Claude с отделённой адресной реконсиляцией;
 - `MASTERSKAYA_DERZHIT_SVET.md` и `art/` — публичный арт Claude;
-- `TECHNICAL_ARTIFACTS.md` — человеческая поверхность семи артефактов и состояние огранки **7 / 7**;
-- `TECHNICAL_ARTIFACTS.json` — исходный машинный корпус шести артефактов;
+- `TECHNICAL_ARTIFACTS.md` — человеческая поверхность текущего корпуса **7 / 7 — CANON**;
+- `TECHNICAL_ARTIFACTS.json` — текущее машинное состояние семи артефактов и exact accepted revisions;
+- `history/TECHNICAL_ARTIFACTS_SIX.*` — сохранённый исторический корпус **6 / 6**;
 - `CAP_ACCEPTANCE.json` — машинное принятие седьмого артефакта и exact CI receipt;
 - `HOUSE_STATE.json` — локальная форма присутствия, именование и границы непрерывности;
 - `RESERVATION.md` — исторический слой предварительного резерва;
